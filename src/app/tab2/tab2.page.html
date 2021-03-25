@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Transaksi</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar style="border-radius: 20px;" [(ngModel)]="queryText" (search)="search_product($event)" placeholder="Cari Order Id"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+  <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMin="100" pullMax="200">  
+    <ion-refresher-content  
+    pullingIcon="arrow-dropdown"  
+    pullingText="Tarik untuk Refresh"  
+    refreshingSpinner="circles"  
+    refreshingText="Memuat Data...">
+  </ion-refresher-content>  
+</ion-refresher>   
+
+<ion-list style="background: var(--ion-color-bg);padding-top: 0px;">
+  <div style="padding: 0px 10px;--background: var(--ion-color-bg);" *ngFor="let data of list_product; let i = index;">
+    <ion-row 
+      style="padding-right: 0px;margin-top:10px;background:#fff;box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);border-radius: 15px;">
+      <ion-col size="3" style="margin: 0px;text-align: center;"(click)="goto_detail(data.id_order)">
+        <img src="assets/imgs/bag.png" alt="Foto"
+          style="border-radius: 50px;width: 75px;height: 75px;object-fit: cover;">
+      </ion-col>
+      <ion-col size="9" style="padding-top: 10px;"(click)="goto_detail(data.id_order)">
+        <p style="font-weight: 500;color: #5a5a5a;margin: 0px;">#{{data.id_order}}</p>
+        <h6 style="margin: 0px;">{{data.grand_total | currency : 'IDR' : 'Rp. ' }}</h6>
+        <h6 style="margin: 0px;" *ngIf="data.status_order == 0">Pesanan Baru</h6>
+        <h6 style="margin: 0px;" *ngIf="data.status_order == 1">Menunggu Transfer</h6>
+        <h6 style="margin: 0px;" *ngIf="data.status_order == 2">Dalam Proses</h6>
+        <h6 style="margin: 0px;" *ngIf="data.status_order == 3">Dalam Pengiriman</h6>
+        <h6 style="margin: 0px;" *ngIf="data.status_order == 4">Paket di terima</h6>
+        <h6 style="margin-top: 3px;padding: 3px 10px;border-radius: 20px;font-size: 14px;text-transform: capitalize;display: inline-block;background: #e13838;color: #fff;">
+          {{data.status_pembayaran == 0 ? 'Belum Lunas' : 'Lunas' }}
+        </h6>
+      </ion-col>
+      <ion-col size="12" style="text-align: center;">
+        <hr style="margin: 0px;">
+        <ion-button size="small" *ngIf="data.status_pembayaran==0" (click)="konfirmasi(data.id_order)"
+          style="color: #fff;height: 32px;--background: var(--ion-color-primary);width: 90%;--border-radius: 10px;margin-top: 10px;">Konfirmasi
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-list>
+
+<ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll> 
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+  <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+  <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+  <ion-fab-button>
+      <img src="assets/imgs/bag.png">
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

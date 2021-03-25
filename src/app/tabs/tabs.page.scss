@@ -1,0 +1,37 @@
+
+ion-badge {
+    position: absolute;
+    background: #f70b0b;
+    border-radius: 50%;
+    opacity: 0.9;
+    top: -9px;
+    // left: 18px;
+    right: 17px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    z-index: 9;
+}
+
+ion-tab-bar.my-custom-tab-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    --background: transparent;
+    border-top: none;
+
+    svg {    
+        width: 72px;
+        margin-top: 19px;
+        path{
+            fill:  #f3f3f3;
+        }		
+    }
+  
+    // ion-tab-button {
+    //   --background: transparent;
+    // }
+    .button-native {
+        padding: 0px;
+    }
+  }

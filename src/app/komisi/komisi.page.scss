@@ -1,0 +1,30 @@
+.no-scroll {
+    --overflow: hidden;
+}
+ion-toolbar {
+    .notification-icon-button {
+        .btn_badge {
+            --overflow: visible;
+        
+            ion-badge {
+                position: absolute;
+                background: #f70b0b;
+                border-radius: 50%;
+                opacity: 0.9;
+                top: -4px;
+                right: -3px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+        }
+    }
+  }
+  .sc-ion-segment-md-h{
+    --color-checked: #fff;
+    columns: #7a7a7a;;
+  }
+
+  .segment-button-checked{
+      color: #fff;
+  }

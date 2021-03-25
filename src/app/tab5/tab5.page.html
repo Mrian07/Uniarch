@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="valid == 'ada'">
+      <ion-menu-button style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="valid !== 'ada'" (click)="kosong()">
+      <ion-icon name="menu-outline" style="font-size: 28px;margin: 10px;color: #fff;">
+      </ion-icon>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Kontak</ion-title>
+  </ion-toolbar>
+</ion-header> 
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+<br>
+  <ion-card style="border-radius: 20px;background: #fff;" >
+    <ion-row>
+      <ion-col size="12" style="text-align: center;">
+        <h6><b>Informasi Pembayaran</b></h6>
+      </ion-col>
+    </ion-row>
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Bank</ion-col>
+        <ion-col size="6" class="item_detail_order">: {{nomor_rekening.nama_bank}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Nomor Rekening</ion-col>
+        <ion-col size="6" class="item_detail_order">: {{nomor_rekening.no_rekening}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Atas Nama</ion-col>
+        <ion-col size="6" class="item_detail_order">: {{nomor_rekening.nama_pemilik}}</ion-col>
+      </ion-row> 
+    <br>
+  </ion-card>
+  <ion-card style="border-radius: 20px;background: #fff;margin-top: 10px;">
+    <ion-row>
+      <ion-col size="12" style="text-align: center;">
+        <h6><b>Hubungi Kami di</b></h6>
+      </ion-col>
+      <ion-col size="4" style="text-align: center;">
+        <a ion-button href="mailto:{{kontak.email}}">
+          <img src="assets/imgs/email.png" style="width: 50%;margin: auto;">
+        </a>
+        <h6 style="color: #222;">Kirim Email</h6>
+      </ion-col>
+      <ion-col size="4" style="text-align: center;">
+        <a ion-button href="tel:{{kontak.telp}}">
+        <img src="assets/imgs/call.png" style="width: 50%;margin: auto;">
+        </a>
+        <h6 style="color: #222;">Telepon</h6>
+      </ion-col>
+      <ion-col size="4" style="text-align: center;" (click)="open_wa(kontak.telp)">
+        <img src="assets/imgs/wa.png" style="width: 50%;margin: auto;">
+        <h6 style="color: #222;">Whatsapp</h6>
+      </ion-col>
+    </ion-row>
+    <br>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+    <ion-fab-button>
+        <img src="assets/imgs/bag.png">
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!-- <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order">Untuk transaksi pembayaran bisa melalui rekening bank yang terdaftar di bawah ini</ion-card-subtitle>
+      </ion-card-header>    
+    <ion-card-content style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Bank</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.nama_bank}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Nomor Rekening</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.no_rekening}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Atas Nama</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.nama_pemilik}}</ion-col>
+      </ion-row>                              
+    </ion-card-content>  
+  </ion-card>  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order">Jika ada keluhan, saran atau pertanyaan tentang produk dan transaksi silahkan hubungi customer care kami</ion-card-subtitle>
+      </ion-card-header>    
+    <ion-card-content style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col size="4" class="judul_detail_order">Marketing</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button href="tel:{{kontak.telp}}">{{kontak.telp}}</a></ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="4" class="judul_detail_order">Email</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button href="mailto:{{kontak.email}}">{{kontak.email}}</a>
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="4" class="judul_detail_order">Whatsapp</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button (click)="open_wa(kontak.telp)">Open</a>
+        </ion-col>
+      </ion-row>                              
+    </ion-card-content>  
+  </ion-card>
+</ion-content> -->

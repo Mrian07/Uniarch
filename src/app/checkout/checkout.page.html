@@ -1,0 +1,269 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Konfirmasi Pembelian</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+
+  <ion-row style="padding:0px 10px;">
+    <ion-col size="12">
+      <h5 style="margin: 0px;margin-top: 10px;"><b>Tipe Pengiriman</b></h5>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list style="border-radius: 15px;" lines="none">
+        <ion-item>
+          <!-- <ion-select interface="action-sheet" style="width: 100%;display: contents;" #select_pengiriman
+            (ionChange)="pilih_tipe_pengiriman($event)" [selectedText]="setselected_pengiriman">
+            <ion-select-option *ngFor=" let item of type_pengiriman" value="{{item.val}}">{{item.label}}
+            </ion-select-option>
+          </ion-select> -->
+          <ion-select interface="action-sheet" style="width: 100%;display: contents;" #select_pengiriman
+            (ionChange)="pilih_tipe_pengiriman($event)" placeholder="Pilih Pengiriman">
+            <ion-select-option *ngFor=" let item of type_pengiriman" value="{{item.val}}">{{item.label}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label position="floating">Catatan Pengiriman</ion-label>
+          <ion-textarea type="text" [(ngModel)]="catatan_pengiriman"></ion-textarea>
+        </ion-item> -->
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-list *ngIf="pilihan_tipe_pengiriman==2" lines="none">
+    <ion-list-header><b>Pengirim Paket</b></ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Nama</ion-label>
+      <ion-input type="text" [(ngModel)]="nama_pengirim"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">No. Telp</ion-label>
+      <ion-input type="text" [(ngModel)]="no_telp_pengirim"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Alamat</ion-label>
+      <ion-textarea type="text" [(ngModel)]="alamat_pengirim"></ion-textarea>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-row style="padding:0px 10px;" *ngIf="pilihan_tipe_pengiriman==2" >
+    <ion-col size="12">
+      <h5 style="margin: 0px;margin-top: 10px;"><b>Informasi Penerima</b></h5>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list style="border-radius: 15px;" lines="none">
+        <ion-item>
+          <ion-label position="floating">Nama</ion-label>
+          <ion-input type="text" [(ngModel)]="nama_pengirim"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">No. Telp</ion-label>
+            <ion-input type="text" [(ngModel)]="no_telp_pengirim"></ion-input>
+        </ion-item> 
+        <ion-item>
+            <ion-label position="floating">Alamat</ion-label>
+            <ion-textarea type="text" [(ngModel)]="alamat_pengirim"></ion-textarea>
+        </ion-item>    
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-list >
+      <ion-list-header><b>Penerima Paket</b></ion-list-header>
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input type="text" [(ngModel)]="nama_penerima"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">No. Telp</ion-label>
+          <ion-input type="text" [(ngModel)]="no_telp_penerima"></ion-input>
+      </ion-item> 
+      <ion-item>
+          <ion-label position="floating">Alamat</ion-label>
+          <ion-textarea type="text" [(ngModel)]="alamat_penerima"></ion-textarea>
+      </ion-item> 
+  </ion-list> -->
+
+  <ion-row style="padding:0px 10px;">
+    <ion-col size="12">
+      <h5 style="margin: 0px;margin-top: 10px;"><b>Informasi Penerima</b></h5>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list style="border-radius: 15px;" lines="none">
+        <ion-item>
+          <ion-label position="floating">Nama</ion-label>
+          <ion-input type="text" [(ngModel)]="nama_penerima"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">No. Telp</ion-label>
+          <ion-input type="text" [(ngModel)]="no_telp_penerima"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Alamat</ion-label>
+          <ion-textarea type="text" [(ngModel)]="alamat_penerima"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-list *ngIf="pilihan_tipe_pengiriman!=3">
+    <ion-list-header><b>Tujuan Pengiriman</b></ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">Provinsi</ion-label>
+      <ion-select interface="modal" placeholder="Pilih Propinsi" #select_provinsi
+        (ionChange)="pilih_provinsi($event, 'front')" [selectedText]="setselected_provinsi">
+        <ion-select-option *ngFor=" let item of data_provinsi" [value]="item">{{item.province}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Kabupaten</ion-label>
+      <ion-select interface="modal" placeholder="Pilih Kota" #select_kota (ionChange)="pilih_kota($event)"
+        [selectedText]="setselected_kota">
+        <ion-select-option *ngFor=" let item of data_kota" [value]="item">{{item.city_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Kecamatan</ion-label>
+      <ion-select interface="modal" placeholder="Pilih Kecamatan" #select_kecamatan
+        (ionChange)="pilih_kecamatan($event)" [selectedText]="setselected_kota">
+        <ion-select-option *ngFor=" let item of data_kecamatan" [value]="item">{{item.subdistrict_name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Kurir</ion-label>
+      <ion-select interface="modal" placeholder="Pilih Kurir" #select_kurir (ionChange)="pilih_kurir($event)"
+        [selectedText]="setselected_kurir">
+        <ion-select-option *ngFor=" let item of data_kurir" [value]="item">{{item.label}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Pilih Paket</ion-label>
+      <ion-select interface="modal" placeholder="Pilih Paket" #select_paket (ionChange)="pilih_paket($event)"
+        [selectedText]="setselected_paket">
+        <ion-select-option *ngFor=" let item of data_paket" [value]="item">{{item.service}} - {{item.cost | currency :
+          'IDR' : 'Rp.' }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-row style="padding:0px 10px;" *ngIf="pilihan_tipe_pengiriman!=3">
+    <ion-col size="12">
+      <h5 style="margin: 0px;margin-top: 10px;"><b>Tujuan Pengiriman</b></h5>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list style="border-radius: 15px;" lines="none">
+        <ion-item>
+          <ion-select  interface="action-sheet" placeholder="Pilih Provinsi" #select_provinsi 
+          (ionChange)="pilih_provinsi($event)" [selectedText]="setselected_provinsi" style="width: 100%;display: contents;">
+            <ion-select-option *ngFor=" let item of data_provinsi" [value]="item" >{{item.province}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-select  interface="action-sheet" placeholder="Pilih Kota" #select_kota 
+          (ionChange)="pilih_kota($event)" [selectedText]="setselected_kota" style="width: 100%;display: contents;">
+            <ion-select-option *ngFor=" let item of data_kota" [value]="item">{{item.city_name}}</ion-select-option>
+          </ion-select>
+        </ion-item>  
+        <ion-item>
+          <ion-select  interface="action-sheet" placeholder="Pilih Kecamatan" #select_kecamatan 
+          (ionChange)="pilih_kecamatan($event)" [selectedText]="setselected_kota" style="width: 100%;display: contents;">
+            <ion-select-option *ngFor=" let item of data_kecamatan" [value]="item">{{item.subdistrict_name}}</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <ion-item>
+            <ion-select  interface="action-sheet" placeholder="Pilih Kurir" #select_kurir 
+            (ionChange)="pilih_kurir($event)" [selectedText]="setselected_kurir" style="width: 100%;display: contents;">
+              <ion-select-option *ngFor=" let item of data_kurir" [value]="item">{{item.label}}</ion-select-option>
+            </ion-select>
+        </ion-item> 
+        <ion-item>
+            <ion-select  interface="action-sheet" placeholder="Pilih Layanan" #select_paket 
+            (ionChange)="pilih_paket($event)" [selectedText]="setselected_paket" style="width: 100%;display: contents;">
+              <ion-select-option *ngFor=" let item of data_paket" [value]="item">{{item.service}} -  {{item.cost | currency : 'IDR' : 'Rp.' }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-list>
+    <ion-list-header><b>Total Order</b></ion-list-header>
+    <ion-item>
+      <ion-col>Total</ion-col>
+      <ion-col>{{summary.total | currency : 'IDR' : 'Rp.' }}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-col>Ongkos Kirim</ion-col>
+      <ion-col>{{summary.ongkir | currency : 'IDR' : 'Rp.' }}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-col>Potongan</ion-col>
+      <ion-col>{{summary.potongan | currency : 'IDR' : 'Rp.' }}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-col>Grand Total</ion-col>
+      <ion-col>{{summary.grand_total | currency : 'IDR' : 'Rp.' }}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="kodekupon" placeholder="Check Kode Kupon"></ion-input>
+    </ion-item>
+    <ion-item style="text-align: center;">
+      <ion-button (click)="getKupon()" color="secondary">Gunakan Kupon</ion-button>
+      <ion-button (click)="save_pengiriman()">Submit</ion-button>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-row style="padding:0px 10px;">
+    <ion-col size="12">
+      <h5 style="margin: 0px;margin-top: 10px;"><b>Total Order</b></h5>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list style="border-radius: 15px;"  lines="none">
+        <ion-item>
+          <ion-label position="floating">Catatan Pengiriman</ion-label>
+          <ion-textarea type="text" [(ngModel)]="catatan_pengiriman"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="kodekupon" placeholder="Masukkan Kode Kupon"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-col>Total</ion-col>
+          <ion-col style="text-align: right;">{{summary.total | currency : 'IDR' : 'Rp.' }}</ion-col>
+      </ion-item>
+      <ion-item>
+          <ion-col>Ongkos Kirim</ion-col>
+          <ion-col style="text-align: right;">{{summary.ongkir | currency : 'IDR' : 'Rp.' }}</ion-col>
+      </ion-item>      
+      <ion-item>
+          <ion-col>Potongan</ion-col>
+          <ion-col style="text-align: right;">{{summary.potongan | currency : 'IDR' : 'Rp.' }}</ion-col>
+      </ion-item>      
+      <ion-item>
+          <ion-col><b>Grand Total</b></ion-col>
+          <ion-col style="text-align: right;"><b>{{summary.grand_total | currency : 'IDR' : 'Rp.' }}</b></ion-col>
+      </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+<br><br><br><br>
+
+</ion-content>
+
+<ion-footer style="background: #fff;">
+
+  <ion-row style="padding:0px 10px;">
+    <ion-col size="12">
+      <ion-button size="small" (click)="save_pengiriman()"
+        style="color: #fff;height: 37px;--background: var(--ion-color-primary);width: 100%;--border-radius: 10px;">
+        <b style="color: #fff;">Bayar</b>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

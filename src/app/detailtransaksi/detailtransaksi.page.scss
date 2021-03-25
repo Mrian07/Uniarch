@@ -1,0 +1,52 @@
+.cover{
+    width: 100%;
+    height: 180px;
+    // border:1px solid black;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;    
+    text-align: center;
+}
+.img_product{
+    height: 180px;
+}
+.btn_add_plus{
+    width: 30px;
+    height: 30px;
+    --border-radius: 50%;
+    --background: white;
+    color: black;
+}
+.native-input.sc-ion-input-md{
+    text-align: center;
+}
+.input_qty{
+    .native-input{
+        text-align: center;        
+    }
+}
+.judul_detail_order{
+    font-weight: bold;
+}
+.item_detail_order{
+    white-space: normal;
+}
+ion-toolbar {
+    .notification-icon-button {
+        .btn_badge {
+            --overflow: visible;
+        
+            ion-badge {
+                position: absolute;
+                background: #f70b0b;
+                border-radius: 50%;
+                opacity: 0.9;
+                top: -4px;
+                right: -3px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+        }
+    }
+  }

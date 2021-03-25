@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-back-button defaultHref="/riwayat-order"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Konfirmasi</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+
+  <div style="text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;">
+    <div style="margin-bottom: 20px;">
+      <h6 style="margin: 0px;"><b style="color: #fff;">Konfirmasi Transfer Bank</b></h6>
+    </div>
+    <br>
+  <form #signupForm="ngForm" novalidate>
+    <ion-list lines="none" style="border-radius: 20px;">
+        <ion-item>
+          <ion-label position="stacked" color="primary">ID Order</ion-label>
+          <ion-input [(ngModel)]="signup.id_order" name="id_order" type="text" #id_order="ngModel" readonly required>
+          </ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label position="stacked" color="primary">Nama Pemilik Rekening</ion-label>
+          <ion-input [(ngModel)]="signup.nama_pemilik" name="nama_pemilik" type="text" #nama_pemilik="ngModel" required>
+          </ion-input>
+        </ion-item>  
+        <ion-text color="danger">
+          <p [hidden]="nama_pemilik.valid || submitted == false" class="ion-padding-start">
+            Nama Pemilik Rekening tidak boleh kosong
+          </p>
+        </ion-text>                       
+        <ion-item>
+          <ion-label position="stacked" color="primary">Dari Bank</ion-label>
+          <ion-select [(ngModel)]="signup.dari_bank" name="dari_bank" type="text" #dari_bank="ngModel" required>
+              <ion-select-option value="L">Bank Central Asia</ion-select-option>
+              <ion-select-option value="P">Bank Lainnya</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="dari_bank.valid || submitted == false" class="ion-padding-start">
+            Dari Bank tidak boleh kosong
+          </p>
+        </ion-text>         
+        <ion-item>
+          <ion-label position="stacked" color="primary">Ke Bank</ion-label>
+          <ion-input [(ngModel)]="signup.ke_bank" name="ke_bank" type="text" #ke_bank="ngModel" readonly required>
+          </ion-input>
+        </ion-item>         
+        <ion-text color="danger">
+          <p [hidden]="ke_bank.valid || submitted == false" class="ion-padding-start">
+            Ke Bank tidak boleh kosong
+          </p>
+        </ion-text>         
+        <ion-item>
+          <ion-label position="stacked" color="primary">Jumlah Dana</ion-label>
+          <ion-input [(ngModel)]="signup.jumlah_dana" name="jumlah_dana" type="number" #jumlah_dana="ngModel" required>
+          </ion-input>
+        </ion-item>  
+        <ion-text color="danger">
+          <p [hidden]="jumlah_dana.valid || submitted == false" class="ion-padding-start">
+            Jumlah Dana tidak boleh kosong
+          </p>
+        </ion-text>  
+        <ion-item>
+          <ion-label position="stacked" color="primary">Tanggal Pembayaran</ion-label>
+          <!-- <ion-input [(ngModel)]="signup.tanggal_pembayaran" name="tanggal_pembayaran" type="date" #tanggal_pembayaran="ngModel" required>
+          </ion-input> -->
+          <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Pilih Tanggal" [(ngModel)]="signup.tanggal_pembayaran" name="tanggal_pembayaran"
+          #tanggal_pembayaran="ngModel" required
+          cancelText="Batal" doneText="Pilih"></ion-datetime>
+        </ion-item>  
+        <ion-text color="danger">
+          <p [hidden]="tanggal_pembayaran.valid || submitted == false" class="ion-padding-start">
+            Tanggal Pembayaran tidak boleh kosong
+          </p>
+        </ion-text>  
+        <ion-item>
+          <ion-label position="stacked" color="primary">Bukti Foto</ion-label>
+          <ion-input [(ngModel)]="signup.bukti" name="bukti" type="hidden" #bukti="ngModel" required></ion-input>
+        </ion-item> 
+
+        <ion-text color="danger">
+          <p [hidden]="tanggal_pembayaran.valid || submitted == false" class="ion-padding-start">
+            Bukti Foto tidak boleh kosong
+          </p>
+        </ion-text>  
+        <div style="width: 100%;text-align: center;" (click)="upload_bukti()">
+          <div style="width: 80%;border:2px dashed#c4c4c4;margin:0 auto;border-radius: 20px;">
+            <img class="product-image" style="height: 120px;" src="{{signup.bukti}}" onerror="this.src = '/assets/img/no_image.png'">
+          </div>         
+        </div>                                  
+    </ion-list>
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="upload_bukti()" color="light" style="--border-radius:20px">
+            Upload Bukti</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <div>
+      <ion-button (click)="onSignup(signupForm)" type="submit" color="light" expand="block"
+      style="--border-radius:20px"><b style="color: var(--ion-color-primary);">Submit</b></ion-button>
+    </div>
+  </form>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+.btn_add_plus{
+    width: 30px;
+    height: 30px;
+    --border-radius: 50%;
+    --background: white;
+    color: black;
+}
+
+.button-solid{
+    --border-radius: 15px;
+}
+
+ion-toolbar {
+    background: var(--ion-color-primary) !important;
+    --background: var(--ion-color-primary) !important;
+}
+
+ion-badge {
+    position: absolute;
+    background: #f70b0b;
+    border-radius: 50%;
+    opacity: 0.9;
+    top: -9px;
+    // left: 18px;
+    right: 17px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    z-index: 9;
+}

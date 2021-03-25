@@ -1,0 +1,123 @@
+
+<ion-header>
+  <ion-toolbar [class.show-background]="showToolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" src="/assets/icon/chevron-back-outline.svg" [class.change-color]="coloricon"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="warna" (click)="goto_checkout()">
+      <ion-badge class="badge_icon" style="top: 0px;" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}
+      </ion-badge>
+      <ion-icon src="/assets/icon/cart-outline.svg" [class.change-color]="coloricon"
+        style="font-size: 28px;margin: 10px;">
+      </ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)" style="--background: var(--ion-color-bg);">
+
+  <div style="margin-top: -57px;">
+
+    <div class="banner">
+      <!-- <img src="assets/imgs/produk.jpg" class="crop_img" > -->
+      <ion-slides pager="true" loop="true">
+        <ion-slide>
+          <div class="img_box center_img">
+            <img src="{{cover}}" class="crop_img" onerror="this.src = '/assets/img/no_image.png'">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <div>
+      <ion-row style="padding: 10px;">
+        <ion-col size="12" style="height: fit-content;">
+          <h4 style="margin: 0px;font-weight: 500;">{{nama_pro}}</h4>
+        </ion-col>
+        <ion-col size="12" style="height: fit-content;" *ngIf="akses != null">
+
+          <h4 *ngIf="data_user.status_pel == 1" style="margin: 0px;color: var(--ion-color-primary);"> 
+            {{harga_jual_pro2 - (harga_jual_pro2 * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+          </h4>
+          <h4 *ngIf="data_user.status_pel == 2" style="margin: 0px;color: var(--ion-color-primary);">
+            {{harga_jual_reseller - (harga_jual_reseller * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+          </h4>
+          <h4 *ngIf="data_user.status_pel == 0" style="margin: 0px;color: var(--ion-color-primary);">
+            {{harga_user - (harga_user * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+          </h4>
+
+        </ion-col>
+        <!-- <ion-col size="12" style="height: fit-content;">
+          <p style="margin: 0px;">{{berat_pro}}gram /pcs</p>
+        </ion-col> -->
+        <ion-col size="6" style="height: fit-content;">
+          <p style="margin: 0px;">Review (0)</p>
+        </ion-col>
+        <ion-col size="6" style="height: fit-content;text-align: right;">
+          <span
+            style="margin:7px;background:var(--ion-color-primary);color: #fff;padding: 4px 13px;border-radius: 49px;">
+            Total Stok {{stok_pro}}
+          </span>
+        </ion-col>
+        <ion-col size="2" style="height: fit-content;margin-top:20px;text-align: center;">
+          <button style="background: #0000;" (click)="add_minus()">
+            <ion-icon name="remove-circle" style="font-size: 34px;" color="danger"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col size="8" style="height: fit-content;margin-top:20px;text-align: center;">
+          <p style="margin: 0px;">
+            <input type="number" [(ngModel)]="input_qty" style="width: 100%;border: unset;height: 35px;
+          border-radius: 20px;text-align: center;">
+            <input type="text" name="id_pro" value="{{id_pro}}" #id_pro hidden
+              style="width: 100%;border: 1px solid #5a5a5a;height: 35px;border-radius: 20px;text-align: center;">
+          </p>
+        </ion-col>
+        <ion-col size="2" style="height: fit-content;margin-top:20px;text-align: center;">
+          <button style="background: #0000;" (click)="add_plus()">
+            <ion-icon name="add-circle" style="font-size: 34px;" color="secondary"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col size="12" style="height: fit-content;text-align: center;">
+          <ion-button size="small" expand="block" (click)="insert_cart()"
+            style="color: #fff;height: 37px;background: #356d75;width: 100%;border-radius: 20px;">
+            Tambahkan &nbsp; <ion-icon src="/assets/icon/cart-outline.svg" style="color: #fff;"></ion-icon>
+
+          </ion-button>
+        </ion-col>
+        <ion-col size="12" style="height: fit-content;text-align: center;">
+          <ion-button size="small" expand="block" (click)="open_wa(kontak.telp)"
+            style="color: #fff;height: 37px;background: #356d75;width: 100%;border-radius: 20px;">
+            Pesan via Whatsapp &nbsp;<ion-icon name="logo-whatsapp"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-list lines="none">
+      <ion-item [ngClass]="faqExpand1 ? 'active' : '' " (click)="faqExpandToggle1()">
+        <div class="item_inner">
+          <h2>Deskripsi</h2>
+          <p [innerHTML]="desc_pro"></p>
+          <br><br><br><br><br><br><br><br><br><br>
+          
+        </div>
+      </ion-item>
+      <!-- <ion-item [ngClass]="faqExpand3 ? 'active' : '' " (click)="faqExpandToggle3()">
+        <div class="item_inner">
+          <h2>Ulasan</h2>
+          <p>Belum Ada Ulasan Untuk Produk ini</p>
+        </div>
+      </ion-item> -->
+
+    </ion-list>
+
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+    <ion-fab-button>
+        <img src="assets/imgs/bag.png">
+    </ion-fab-button>
+</ion-fab>
+</ion-content>

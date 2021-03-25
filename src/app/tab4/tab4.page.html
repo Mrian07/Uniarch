@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="valid == 'ada'">
+      <ion-menu-button style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="valid !== 'ada'" (click)="kosong()">
+      <ion-icon name="menu-outline" style="font-size: 28px;margin: 10px;color: #fff;">
+      </ion-icon>
+    </ion-buttons>
+    <ion-title style="color: #fff;">News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: var(--ion-color-bg);">
+  <ion-list style="background: var(--ion-color-bg);">
+
+    <ion-card *ngFor="let item of hasil" style="padding: 0px;border-radius: 15px;background: #fff;">
+      <!-- <ion-card-header>
+        <ion-card-title>{{item.nama_blog}}</ion-card-title>
+      </ion-card-header> -->
+      <!-- <ion-card fullscreen>  -->
+      <img src="{{item.cover_blog}}">
+      <ion-row style="margin: 10px;">
+        <h5><b>{{item.nama_blog}}</b></h5>
+      </ion-row>
+      <ion-row style="margin: 10px;">
+        <div [innerHTML]="item.isi_blog"></div>
+      </ion-row>
+      <!-- </ion-card > -->
+    </ion-card>
+    <br>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+    <ion-fab-button>
+        <img src="assets/imgs/bag.png">
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>

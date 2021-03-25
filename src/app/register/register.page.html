@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title  style="color: #fff;">Daftar</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content  [fullscreen]="true" style="--background: var(--ion-color-bg);">
+
+  <div style="text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;">
+    <div style="margin-bottom: 20px;">
+      <h5 style="margin: 0px;"><b style="color: #fff;">Daftar</b></h5>
+    </div>
+    <br>
+  <form #signupForm="ngForm" novalidate>
+    <ion-list lines="none" style="border-radius: 20px;">
+        <ion-item>
+          <ion-label position="floating" color="primary">Nama</ion-label>
+          <ion-input [(ngModel)]="signup.nama" name="nama" type="text" #nama="ngModel" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="nama.valid || submitted == false" class="ion-padding-start">
+            Nama tidak boleh kosong
+          </p>
+        </ion-text> 
+        <ion-item>
+          <ion-label position="floating" color="primary">No. Telp</ion-label>
+          <ion-input [(ngModel)]="signup.no_telp" name="no_telp" type="text" #no_telp="ngModel" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="no_telp.valid || submitted == false" class="ion-padding-start">
+            No Telp tidak boleh kosong
+          </p>
+        </ion-text>         
+        <ion-item>
+          <ion-label position="floating" color="primary">Jenis Kelamin</ion-label>
+          <ion-select [(ngModel)]="signup.jk_pel" name="jk_pel" type="text" #jk_pel="ngModel" required>
+              <ion-select-option value="L">Laki-laki</ion-select-option>
+              <ion-select-option value="P">Perempuan</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="jk_pel.valid || submitted == false" class="ion-padding-start">
+            Jenis Kelamin tidak boleh kosong
+          </p>
+        </ion-text>         
+        <ion-item>
+          <ion-label position="floating" color="primary">Provinsi</ion-label>
+          <ion-select [(ngModel)]="signup.provinsi" name="provinsi" type="text" (ionChange)="pilih_provinsi($event)" #provinsi="ngModel" required>
+              <ion-select-option *ngFor=" let item of data_provinsi" [value]="item">{{item.provinsi}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="provinsi.valid || submitted == false" class="ion-padding-start">
+            Provinsi tidak boleh kosong
+          </p>
+        </ion-text>         
+        <ion-item>
+          <ion-label position="floating" color="primary">Kota / Kabupaten</ion-label>
+          <ion-select [(ngModel)]="signup.kota" (ionChange)="pilih_kota($event)" name="kota" type="text" #kota="ngModel" required>
+              <ion-select-option *ngFor=" let item of data_kota" [value]="item">{{item.kota}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="kota.valid || submitted == false" class="ion-padding-start">
+            Kota tidak boleh kosong
+          </p>
+        </ion-text> 
+        <ion-item>
+          <ion-label position="floating" color="primary">Kecamatan</ion-label>
+          <ion-select [(ngModel)]="signup.kecamatan" name="kecamatan" type="text" #kecamatan="ngModel" required>
+              <ion-select-option *ngFor=" let item of data_kecamatan" [value]="item">{{item.kecamatan}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="kecamatan.valid || submitted == false" class="ion-padding-start">
+            kecamatan tidak boleh kosong
+          </p>
+        </ion-text>
+        <ion-item>
+          <ion-label position="floating" color="primary">Alamat</ion-label>
+          <ion-textarea [(ngModel)]="signup.alamat" name="alamat" type="text" #alamat="ngModel" required>
+          </ion-textarea>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="alamat.valid || submitted == false" class="ion-padding-start">
+            Alamat tidak boleh kosong
+          </p>
+        </ion-text>
+        <ion-item>
+          <ion-label position="floating" color="primary">Email</ion-label>
+          <ion-input [(ngModel)]="signup.email" name="email" type="email" #email="ngModel" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+            Email tidak boleh kosong / valid
+          </p>
+        </ion-text>                 
+      <ion-item>
+        <ion-label position="floating" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          Password tidak boleh kosong / valid
+        </p>
+      </ion-text>
+      <ion-item>
+        <ion-label position="floating" color="primary">Konfirmasi Password</ion-label>
+        <ion-input [(ngModel)]="signup.confirm_password" name="confirm_password" type="password" #confirm_password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="confirm_password.valid || submitted == false" class="ion-padding-start">
+          Konfirmasi Password tidak boleh kosong / valid
+        </p>
+        <p *ngIf="error_konfirmasi==true" class="ion-padding-start">
+          Konfirmasi Password harus sama dengan password
+        </p>        
+      </ion-text>      
+    </ion-list>
+    <br><br>
+    <div >
+      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block" color="light"
+      style="--border-radius:20px"><b>Daftar</b></ion-button>
+    </div>
+  </form>
+  </div>
+
+</ion-content>

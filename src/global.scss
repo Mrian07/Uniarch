@@ -1,0 +1,144 @@
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.center_img {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        &.crop_img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: -50% !important;
+            right: -50% !important;
+            margin: auto;
+        }
+    }
+}
+
+b {
+    color: #3e3e3e;
+}
+
+.warnatextdua {
+    color: var(--ion-color-primary);
+}
+
+.wrap-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.wrap-text-auto {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.wrap-text-dua {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.native-input.sc-ion-input-md {
+    // background: #fff;
+    color: #8b8b8b;
+    padding: 0px;
+}
+
+p {
+    margin: 0px;
+    color: #222;
+}
+
+.button-native {
+    border: none !important;
+}
+
+h2 {
+    color: #222;
+    margin: 0px;
+}
+h3 {
+    color: #222;
+    margin: 0px;
+}
+h4 {
+    color: #222;
+    margin: 0px;
+}
+h5 {
+    margin: 0px;
+    color: #222;
+}
+h6 {
+    margin: 0px;
+    color: #222;
+}
+
+.item {
+    color: #222;
+}
+.action-sheet-button-inner.sc-ion-action-sheet-md {
+    color: #222;
+}
+ion-select::part(placeholder) {
+    color: #222;
+    opacity: 1;
+}
+.native-input.sc-ion-input-md {
+    color: #222;
+}
+// ion-segment-button {
+//     --color: #222;
+// }
+.action-sheet-group.sc-ion-action-sheet-md:first-child {
+    border-radius: 20px 20px 0 0;
+}
+.action-sheet-button-inner.sc-ion-action-sheet-md {
+    color: #222;
+}
+.action-sheet-title {
+    color: #222 !important;
+}
+.action-sheet-icon {
+    color: #222 !important;
+}
+:focus {
+    outline: none;
+}
+ion-toolbar {
+    --background: var(--ion-color-primary) ;
+}
+.searchbar-input.sc-ion-searchbar-md{
+    border-radius: 20px !important;
+}
+.alert-wrapper.sc-ion-alert-md{
+    border-radius: 20px;
+}
+// ion-tab-bar.my-custom-tab-bar ion-tab-button {
+//     --background: transparent;
+//   }

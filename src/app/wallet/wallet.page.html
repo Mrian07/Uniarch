@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Wallet</ion-title>
+    <!-- <ion-buttons slot="end" class="notification-icon-button">
+      <ion-button class="btn_badge" (click)="goto_checkout()">
+          <ion-icon class="fa fa-shopping-cart"></ion-icon>
+          <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+
+  <ion-card style="background: #fff;border-radius: 15px;">
+    <ion-row style="margin:15px">
+      <ion-col size="2">
+        <p>
+          <ion-icon name="wallet" class="icon-set" style="color: var(--ion-color-primary);"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col size="10">
+        <h6 class="title" style="color: #222;"><b>
+          {{data_wallet.saldo==null ? 0 : data_wallet.saldo | currency : 'IDR' : 'Rp. '}}
+        </b></h6>
+        <p class="title-small" style="color: #222;">Total Saldo anda.</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card style="background: #fff;border-radius: 15px;margin-top: 15px;">
+    <ion-row style="margin:15px">
+      <ion-col size="12">Jumlah Penarikan</ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="total_widthdraw" type="number" placeholder="Masukkan Jumlah"></ion-input>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col>
+        <ion-button (click)="save()" expand="full"
+        style="--background: var(--ion-color-primary);--border-radius:15px;">Tarik</ion-button>
+      </ion-col>
+    </ion-row> -->
+  </ion-card>
+</ion-content>
+
+<ion-footer style="background: #fff;">
+
+  <ion-row style="padding:0px 10px;">
+    <ion-col size="12">
+      <ion-button size="small" (click)="save()"
+        style="color: #fff;height: 37px;--background: var(--ion-color-primary);width: 100%;--border-radius: 10px;">
+        <b style="color: #fff;">Tarik</b>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

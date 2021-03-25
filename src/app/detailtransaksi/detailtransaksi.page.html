@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-back-button defaultHref="/riwayat-order"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Detail Transaksi</ion-title>
+      <!-- <ion-buttons slot="end" class="notification-icon-button">
+        <ion-button class="btn_badge" (click)="goto_checkout()">
+            <ion-icon class="fa fa-shopping-cart"></ion-icon>
+            <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+        </ion-button>
+      </ion-buttons>-->
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">
+        Data Order
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content [innerHTML] = "data_order.data_order"></ion-card-content>
+  </ion-card>
+
+ <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Pengiriman</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content [innerHTML] = "data_order.pengiriman"></ion-card-content>
+  </ion-card> 
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Penerima</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content [innerHTML] = "data_order.penerima"></ion-card-content>
+  </ion-card> 
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Informasi Produk</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="border-bottom: 1px solid gray;" *ngFor="let item of detail_order">
+        <ion-row>
+          <ion-col size="6" class="judul_detail_order">Nama Produk</ion-col>
+          <ion-col size="6" class="item_detail_order">{{item.nama_pro_order}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="judul_detail_order">Jumlah</ion-col>
+          <ion-col size="6" class="item_detail_order">{{item.qty_pro_order}}</ion-col>
+        </ion-row>   
+        <ion-row>
+          <ion-col size="6" class="judul_detail_order">Berat</ion-col>
+          <ion-col size="6" class="item_detail_order">{{item.berat}} Kg</ion-col>
+        </ion-row> 
+        <ion-row>
+          <ion-col size="6" class="judul_detail_order">Harga</ion-col>
+          <ion-col size="6" class="item_detail_order">{{item.harga_pro_order | currency : 'IDR' : 'Rp. '}}</ion-col>
+        </ion-row> 
+        <ion-row>
+          <ion-col size="6" class="judul_detail_order">Sub Total</ion-col>
+          <ion-col size="6" class="item_detail_order">{{item.total_berat_harga | currency : 'IDR' : 'Rp. '}}</ion-col>
+        </ion-row>                               
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Ringkasan</ion-card-subtitle>
+      </ion-card-header>    
+    <ion-card-content style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Total Berat</ion-col>
+        <ion-col size="6" class="item_detail_order">{{data_order.total_berat}} Kg</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Total</ion-col>
+        <ion-col size="6" class="item_detail_order">{{data_order.total_harga | currency : 'IDR' : 'Rp. '}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Harga Ongkir</ion-col>
+        <ion-col size="6" class="item_detail_order">{{data_order.total_ongkir | currency : 'IDR' : 'Rp. '}}</ion-col>
+      </ion-row>   
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Potongan</ion-col>
+        <ion-col size="6" class="item_detail_order">{{data_order.total_potongan | currency : 'IDR' : 'Rp. '}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Grand Total</ion-col>
+        <ion-col size="6" class="item_detail_order">{{data_order.grand_total | currency : 'IDR' : 'Rp. '}}</ion-col>
+      </ion-row>                         
+    </ion-card-content>  
+  </ion-card>  
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Metode Pembayaran</ion-card-subtitle>
+      </ion-card-header>    
+    <ion-card-content style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Bank</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.nama_bank}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Nomor Rekening</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.no_rekening}}</ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="6" class="judul_detail_order">Atas Nama</ion-col>
+        <ion-col size="6" class="item_detail_order">{{nomor_rekening.nama_pemilik}}</ion-col>
+      </ion-row>                              
+    </ion-card-content>  
+  </ion-card> 
+
+  <ion-card style="background: #fff;border-radius: 20px;">
+    <ion-card-header>
+      <ion-card-subtitle  class="judul_detail_order" 
+      style="font-size: 17px;font-weight: 600;color: var(--ion-color-primary);">Bantuan</ion-card-subtitle>
+      </ion-card-header>    
+    <ion-card-content style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col size="4" style="text-align: center;">
+          <a ion-button href="tel:{{kontak.telp}}">
+            <img src="assets/imgs/email.png" style="width: 50%;margin: auto;">
+          </a>
+          <h6 style="color: #222;">Kirim Email</h6>
+        </ion-col>
+        <ion-col size="4" style="text-align: center;">
+          <a ion-button href="mailto:{{kontak.email}}">
+          <img src="assets/imgs/call.png" style="width: 50%;margin: auto;">
+          </a>
+          <h6 style="color: #222;">Telepon</h6>
+        </ion-col>
+        <ion-col size="4" style="text-align: center;" (click)="open_wa(kontak.telp)">
+          <img src="assets/imgs/wa.png" style="width: 50%;margin: auto;">
+          <h6 style="color: #222;">Whatsapp</h6>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        <ion-col size="4" class="judul_detail_order">Marketing</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button href="tel:{{kontak.telp}}">{{kontak.telp}}</a></ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="4" class="judul_detail_order">Email</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button href="mailto:{{kontak.email}}">{{kontak.email}}</a>
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col size="4" class="judul_detail_order">Whatsapp</ion-col>
+        <ion-col size="8" class="item_detail_order">
+          <a ion-button (click)="open_wa(kontak.telp)">Open</a>
+        </ion-col>
+      </ion-row>                               -->
+    </ion-card-content>  
+  </ion-card>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="konfirmasi(id_pro)">Konfirmasi</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>      -->
+</ion-content>

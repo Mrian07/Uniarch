@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Referral</ion-title>
+    <!-- <ion-buttons slot="end" class="notification-icon-button">
+      <ion-button class="btn_badge" defaultHref="/checkout">
+          <ion-icon class="fa fa-shopping-cart"></ion-icon>
+          <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+      </ion-button>
+    </ion-buttons>     -->
+  </ion-toolbar>
+
+<ion-segment (ionChange)="pilih_tab($event)" style="background: var(--ion-color-primary);">
+  <ion-segment-button value="1" checked>
+    <ion-label>Share</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="2">
+    <ion-label>List</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- <ion-segment [(ngModel)]="segment" style="background: var(--ion-color-primary);">
+  <ion-segment-button value="1">
+    TUKAR POIN
+  </ion-segment-button>
+  <ion-segment-button value="2">
+    RIWAYAT TUKAR
+  </ion-segment-button>
+</ion-segment> -->
+
+</ion-header>
+
+<ion-content style="--background: var(--ion-color-bg);">
+
+  <div *ngIf="show_tab=='1'"  style="background: var(--ion-color-bg);">
+    <br>
+    <ion-card style="border-radius: 20px;background: #fff;padding: 0px 10px;">
+      <ion-row>
+        <br>
+        <ion-col size="12" style="text-align: center;">
+          <img src="assets/imgs/logo.png" style="width: 50%;margin:auto;">
+        </ion-col>
+        <ion-col size="12" style="text-align: center;">
+          <h6><b>Bagikan Kode/Link</b></h6>
+        </ion-col>
+        <ion-col size="6" style="text-align: center;">
+          <!-- <img src="assets/imgs/facebook.png" style="width: 50%;"> -->
+          <ion-button (click)="sharewa()" style="width: 100%;--border-radius:20px;"> Whatsapp</ion-button>
+        </ion-col>
+        <ion-col size="6" style="text-align: center;">
+          <!-- <img src="assets/imgs/twitter.png" style="width: 50%;"> -->
+          <ion-button (click)="copylink()" style="width: 100%;--border-radius:20px;"> Salin</ion-button>
+        </ion-col>
+      </ion-row>
+      <br>
+    </ion-card>
+      <!-- <div style="width: 100%;margin-top: 10px; text-align: center;">
+          <h2>Bagi link via </h2>
+          <ion-button (click)="sharewa()"> Whatsapp</ion-button>
+      </div>
+      <div style="width: 100%;margin-top: 10px; text-align: center;">
+        <h2>Copy link anda</h2>
+        <ion-button (click)="copylink()"> Copy</ion-button>
+      </div> -->
+  </div>
+
+  <ion-list *ngIf="show_tab=='2'"  style="background: var(--ion-color-bg);">
+
+    <ion-card *ngFor="let item of data_referral">
+      <ion-card-content>
+        <div>
+          <ion-row style="width: 100%;">
+            <ion-col size="4">Nama</ion-col>
+            <ion-col>{{item.nama}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  size="4">Email</ion-col>
+            <ion-col>{{item.email}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  size="4">Telp</ion-col>
+            <ion-col>{{item.phone}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  size="4">Komisi</ion-col>
+            <ion-col>{{item.komisi | currency : 'IDR' : 'Rp. ' }}</ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>  
+</ion-content>

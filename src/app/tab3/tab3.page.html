@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: #fff;">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #fff;">Keranjang</ion-title>
+    <!-- <ion-buttons slot="end" class="notification-icon-button">
+      </ion-buttons> -->
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+  <ion-list *ngIf="list_detail!=''" style="background: var(--ion-color-bg);padding-top: 0px;">
+    <div style="padding: 0px 5px" style="background: var(--ion-color-bg);">
+      
+      <ion-item lines="none" style="--background: var(--ion-color-bg);">
+        <ion-checkbox slot="start" style=" margin: 0px;margin-right: 10px;" [(ngModel)]="checkall" (click)="check_all()"></ion-checkbox>
+        <ion-label>Pilih Semua</ion-label>
+      </ion-item>
+
+      <ion-item *ngFor="let item of list_detail; let i = index" lines="none" style="--background: var(--ion-color-bg);">
+        
+        <ion-checkbox style=" margin: 0px;margin-right: 10px;" slot="start" [(ngModel)]="item.isChecked"
+          (click)="pilih_item($event)">
+        </ion-checkbox>
+       
+        <ion-label style="padding: 5px 5px;margin-top: 0px;margin-bottom: 0px;">
+          <ion-row
+            style="margin-top:6px;background:#fff;padding: 5px 10px;box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);border-radius: 15px;">
+
+            <ion-col size="3" style="height: fit-content;">
+              <img src="{{item.gambar_pro}}" alt="Foto"
+                style="border-radius: 50px;width: 60px;height: 60px;object-fit: cover;">
+            </ion-col>
+
+            <ion-col size="9" style="height: fit-content;">
+              <h5 style="font-weight: 500;color: #5a5a5a;overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;">{{item.nama_pro}}</h5>
+              <p>
+                {{item.qty_pro}} x {{item.harga_pro}}
+
+                
+                <ion-item>
+                  <ion-label position="floating" color="primary">Varian</ion-label>
+                  <ion-select [(ngModel)]="item.varianx" name="varian" type="text" (ionChange)="pilih_varian(i)" style="background-color: #cccccc40;border-radius: 5px;padding: 10px;" required>
+                      <ion-select-option *ngFor=" let varian of item.varian " [value]="varian">{{varian.nama_varian}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                
+
+              </p>
+            </ion-col>
+
+            <ion-col col-2 style="text-align: right;">
+              <ion-checkbox slot="end" [(ngModel)]="item.isChecked" (click)="pilih_item($event)"></ion-checkbox>
+            </ion-col> 
+            
+            <ion-row style="width: 100%;">
+              <ion-col size="6">
+
+                <button style="background: #0000;" (click)="add_minus(i)">
+                  <ion-icon name="remove-circle" style="font-size: 23px;" color="danger"></ion-icon>
+                </button>
+
+                <p style="margin: 0px;display: initial;top: -7px;position: relative;">
+                  <input type="number" name="qty_pro" [(ngModel)]="item.qty_pro" style="width: 50px;border: 1px solid #5a5a5a;height: 25px;border-radius: 20px;text-align: center;" readonly>
+                </p>
+                
+                <button style="background: #0000;" (click)="add_plus(i)">
+                  <ion-icon name="add-circle" style="font-size: 23px;" color="secondary"></ion-icon>
+                </button>
+
+              </ion-col>
+              <ion-col size="6" style="text-align: right;margin: auto;">
+                <p> <b style="color: var(--ion-color-primary);">{{ item.sub_total_real | currency : 'IDR' : 'Rp.'}}</b></p>
+
+              </ion-col>
+            </ion-row>
+
+          </ion-row>
+        </ion-label>
+
+      </ion-item>
+
+      <ion-item lines="none" style="--background: var(--ion-color-bg);">
+        <ion-row
+          style="margin-top:30px;background:#fff;padding: 5px 10px;box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          border-radius: 15px;width: 100%;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;">
+          <ion-col size="6" style="text-align: center;">
+            <ion-button (click)="hapus_keranjang()" style="color: #fff;height: 30px;--background: #6b6b6b;width: 100%;--border-radius: 15px;">
+              Hapus Produk</ion-button>
+          </ion-col>
+          <ion-col size="6" style="text-align: center;">
+            <ion-button (click)="update_keranjang()"  style="color: #fff;height: 30px;--background: #6b6b6b;width: 100%;--border-radius: 15px;" primary>
+              Ubah Qty</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button (click)="ke_pengiriman()"
+              style="color: #fff;height: 42px;--background: var(--ion-color-primary);width: 100%;--border-radius: 15px;">
+              <b style="color: #fff;">Lanjutkan</b>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6" style="text-align: right;margin: auto;">
+            <p> <b style="color: var(--ion-color-primary);">{{total_real | currency : 'IDR' : 'Rp.' }}</b></p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      
+      <br><br><br><br><br><br>
+
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="list_detail==''" style="background: var(--ion-color-bg);">
+    <ion-row style="padding: 70px 55px 12px 55px;text-align: center;background: var(--ion-color-bg);">
+      <img src="assets/imgs/newsnotfound.png" alt="Foto"><br>
+      <h5 style=" margin: auto;margin-bottom: 20px;">
+        <b style="color: #afafaf;">Belum Ada Data</b>
+      </h5>
+    </ion-row>
+    <!-- <ion-item>
+      <div style="width: 100%;text-align: center;">
+          Data Keranjang Kosong
+      </div>
+    </ion-item> -->
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+    <ion-fab-button>
+        <img src="assets/imgs/bag.png">
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>

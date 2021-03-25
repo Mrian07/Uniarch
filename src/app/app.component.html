@@ -1,0 +1,58 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+      <ion-menu contentId="main-content" type="overlay">
+          <ion-content style="--background:var(--ion-color-primary);">
+
+              <ion-list  id="inbox-list" style="background:var(--ion-color-primary);" lines="none">
+                  <ion-list-header style="color: #fff;font-size: 17px;font-weight: 700;">
+                    MENU
+                  </ion-list-header>
+                  <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                      <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+                                detail="false" [class.selected]="selectedIndex == i" style="--background:var(--ion-color-primary);">
+                          <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"style="color: #fff;"></ion-icon>
+                          <ion-label style="color: #fff;">{{ p.title }}</ion-label>
+                      </ion-item>
+                  </ion-menu-toggle>
+              </ion-list>
+
+              <!-- <ion-list *ngIf="valid !== 'ada'" id="inbox-list" style="background:#428994;" lines="none">
+                <ion-list-header style="color: #fff;font-size: 17px;font-weight: 700;">
+                  MENU
+                </ion-list-header>
+                <ion-menu-toggle autoHide="false">
+                    <ion-item routerLink="/" routerLinkActive="active" routerDirection="root" detail="false"
+                    style="--background:#428994;">
+                    <ion-icon slot="start" name="home-outline" style="color: #fff;"></ion-icon>
+                      <ion-label style="color: #fff;">
+                        Beranda
+                      </ion-label>
+                    </ion-item>
+                  </ion-menu-toggle>
+        
+                  <ion-menu-toggle autoHide="false">
+                    <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false"
+                    style="--background:#428994;">
+                    <ion-icon slot="start" name="log-in-outline" style="color: #fff;"></ion-icon>
+                      <ion-label style="color: #fff;">
+                        Login
+                      </ion-label>
+                    </ion-item>
+                  </ion-menu-toggle>
+        
+                  <ion-menu-toggle autoHide="false">
+                    <ion-item routerLink="/register" routerLinkActive="active" routerDirection="root" detail="false"
+                    style="--background:#428994;">
+                    <ion-icon slot="start" name="log-in-outline" style="color: #fff;"></ion-icon>
+                      <ion-label style="color: #fff;">
+                        Daftar
+                      </ion-label>
+                    </ion-item>
+                  </ion-menu-toggle>
+            </ion-list> -->
+
+          </ion-content>
+      </ion-menu>
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

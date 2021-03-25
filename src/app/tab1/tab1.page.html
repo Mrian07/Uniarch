@@ -1,0 +1,577 @@
+<ion-header>
+  <ion-toolbar [class.show-background]="showToolbar">
+    <!-- <ion-buttons slot="start" class="warna" *ngIf="valid == 'ada'">
+      <ion-menu-button [class.change-color]="coloricon"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start" class="warna" (click)="kosong()">
+      <ion-icon name="menu-outline" [class.change-color]="coloricon" style="font-size: 28px;margin: 10px;">
+      </ion-icon>
+    </ion-buttons>
+    <ion-title style="text-align: center;">
+      <img src="assets/imgs/logo.png" style="width: 100%;">
+    </ion-title>
+    <ion-buttons slot="end" class="warna" (click)="profile()">
+      <ion-icon name="person-circle-outline" [class.change-color]="coloricon" style="font-size: 28px;margin: 10px;">
+      </ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)" style="--background: var(--ion-color-bg);">
+
+  <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMin="100"
+    pullMax="200">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="banner" *ngIf="data_slider">
+    <ion-slides #IonSlides autoplay="3000" loop="true" pager="true">
+      <ion-slide *ngFor="let prod of data_slider">
+        <img src="{{prod.gambar_slider}}" class="crop_img" style="border-radius: 20px;padding: 10px;" />
+      </ion-slide>
+    </ion-slides>
+  </div> 
+
+  <ion-row *ngIf="!data_slider">
+    <div class="custom-skeleton" style="width: 100%;">
+      <ion-row class="marginbtm">
+        <ion-col size="12">
+          <ion-skeleton-text animated="true"
+            style="width: 100%;height: 167px;--background-rgb: var(--ion-color-light-rgb);"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-row>
+  
+
+  <div class="container">
+    <ion-row style="padding:0px 10px">
+      <!-- <ion-card style="margin: 15px 0px;padding: 0px;border-radius: 30px;">
+        <ion-item lines="none"> -->
+          <ion-searchbar [(ngModel)]="queryText" (search)="search_product($event)" placeholder="Cari Produk"></ion-searchbar>
+          <!-- <ion-input type="text" placeholder="Pencarian" name="cari">
+          </ion-input>
+          <ion-buttons slot="end" style="background: #3e8098;color: #fff;border-radius: 100%;">
+            <ion-icon src="/assets/icon/search-outline.svg" style="font-size: 28px;margin: 6px;">
+            </ion-icon>
+          </ion-buttons> -->
+        <!-- </ion-item>
+      </ion-card> -->
+    </ion-row>
+
+    <div class="card_header d-flex" >
+      <div class="text_box">
+        <ion-row>
+          <ion-col size="6">
+            <h5 style="margin: 0px;"><b>Kategori</b></h5>
+          </ion-col>
+          <!-- <ion-col size="6" style="text-align: end;">
+          <h6 style="margin: 0px;">Lihat Semua</h6>
+        </ion-col> -->
+        </ion-row>
+      </div>
+    </div>
+
+    <ion-card style="box-shadow: none;">
+      <div class="scroll_container">
+        <div class="item_scroll">
+          <div class="img_box center_img">
+            <ion-card style="width: 100%;border-radius: 10px;margin-top: 0px;height: 100%;background: var(--ion-color-primary);
+            text-align: center;" (click)="choose_kategori('semua',0)">
+              <h5 style="margin-top: 20px;font-size: 16px;">
+                <b style="color: #fff;" class="wrap-text-dua">Terbaru</b>
+              </h5>
+            </ion-card>
+          </div>
+        </div>
+        <div class="item_scroll" *ngFor="let item of product_category">
+          <ion-card style="width: 100%;border-radius: 10px;margin-top: 0px;height: 100%;background: var(--ion-color-primary);
+            text-align: center;" (click)="choose_kategori(item, 1)">
+            <h5 style="margin-top: 20px;font-size: 16px;">
+              <b style="color: #fff;" class="wrap-text-dua">{{item.label}}</b>
+            </h5>
+          </ion-card>
+        </div>
+      </div>
+    </ion-card>
+
+    <div class="card_header d-flex">
+      <div class="text_box">
+        <ion-row>
+          <ion-col size="6">
+            <h5 style="margin: 0px;"><b>Semua Produk</b></h5>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <ion-row style="padding: 10px 0px 10px 10px;">
+
+      <ion-col size="12" *ngIf="!list_product" style="text-align: center;"> 
+        <ion-spinner name="circles"></ion-spinner>
+      </ion-col>
+
+      <ion-col size="6" *ngFor="let data of list_product; let i = index;" style="padding: 0px 10px 10px 0px;" >
+        
+
+        <ion-card style="width: 100%;border-radius: 10px;margin-top: 0px;height: 274px;background: #fff;">
+         
+          <span *ngIf="data.disc_pro != '0'"
+            style="text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;position: absolute;justify-content: right;margin-top: 8px;font-size: 12px;right: 7px;top: 0px;">
+            {{data.disc_pro}}% OFF
+          </span>
+
+          <img src="{{url}}normal-{{data.nama_gbr_pro}}" onerror="this.src = '/assets/img/no_image.png'" alt="Foto"
+            style="height: 150px;object-fit: cover;width: 100%;" (click)="goto_detail(data.id_pro)">
+
+          <h6 style="margin: 10px;text-align: left;margin-top: 7px;margin-bottom: 5px;font-weight: 500;" class="wrap-text" (click)="goto_detail(data.id_pro)">
+            {{data.nama_pro}}
+          </h6>
+
+          <div *ngIf="hsl !== null"> 
+            
+            <div *ngIf="data_user.status_pel == 1">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_jual_pro - ( data.harga_jual_pro * data.disc_pro ) / 100 ) | number :
+                  fractionSize}}</b>
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_jual_pro | number : fractionSize}}
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_jual_pro | number : fractionSize}}</b>
+              </h6>
+            </div>
+
+            <div *ngIf="data_user.status_pel == 2">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_reseller - ( data.harga_reseller * data.disc_pro ) / 100 ) | number :
+                  fractionSize}}</b>
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_reseller | number : fractionSize}}
+              </h6>
+
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_reseller | number : fractionSize}}</b>
+              </h6>
+            </div>
+
+            <div *ngIf="data_user.status_pel == 0">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | number : fractionSize}}</b>
+              </h6>
+             
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | number : fractionSize}}
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | number : fractionSize}}</b>
+              </h6>
+            </div>
+
+          </div>
+
+          <div *ngIf="hsl === null">
+            <div>
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | number : fractionSize}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | number : fractionSize}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | number : fractionSize}}</b>
+              </h6>
+
+            </div>
+          </div>
+
+          <ion-row>
+            
+            <ion-col size="8">
+              <h6 style="margin: 0px 0px 5px 5px;text-align: left;font-size: 11px;" class="wrap-text-auto">
+                {{data.kode_pro}}</h6>
+              <span
+                style="margin:7px;text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;font-size: 12px;">
+                {{data.stok_pro}} Pcs
+              </span>
+            </ion-col>
+            
+            <ion-col size="4">
+              <ion-buttons (click)="insert_cart(data.id_pro, i)"
+                style="background:var(--ion-color-primary);color: #fff;border-radius: 100%;padding: 10px;width: fit-content;">
+                <ion-icon name="cart" style="font-size: 22px;"></ion-icon>
+              </ion-buttons>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-card>
+
+
+        <!--
+        <ion-card style="width: 100%;border-radius: 10px;margin-top: 0px;height: 274px;background: #fff;" *ngIf="valid === ada">
+          <span *ngIf="data.disc_pro != '0'"
+            style="text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;position: absolute;justify-content: right;margin-top: 8px;font-size: 12px;right: 7px;top: 0px;">
+            {{data.disc_pro}}% OFF</span>
+
+          <img src="{{url}}normal-{{data.nama_gbr_pro}}" onerror="this.src = '/assets/img/no_image.png'" alt="Foto"
+            style="height: 150px;object-fit: cover;width: 100%;" (click)="goto_detail(data.id_pro)">
+          Login
+          <h6 style="margin: 10px;text-align: left;margin-top: 7px;margin-bottom: 5px;font-weight: 500;"
+            *ngIf="data.set_harga_pro == '1'" class="wrap-text" (click)="goto_detail(data.id_pro)">
+            {{data.nama_pro}}
+          </h6>
+
+          <div *ngIf="hsl !== null"> 
+            <div *ngIf="data_user.status_pel == 1">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_jual_pro - ( data.harga_jual_pro * data.disc_pro ) / 100 ) | number :
+                  fractionSize}}</b>
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_jual_pro | number : fractionSize}}
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_jual_pro | number : fractionSize}}</b>
+              </h6>
+
+            </div>
+
+            <div *ngIf="data_user.status_pel == 2">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_reseller - ( data.harga_reseller * data.disc_pro ) / 100 ) | number :
+                  fractionSize}}</b>
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_reseller | number : fractionSize}}
+              </h6>
+
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_reseller | number : fractionSize}}</b>
+              </h6>
+
+            </div>
+
+            <div *ngIf="data_user.status_pel == 0">
+
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | number : fractionSize}}</b>
+              </h6>
+             
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | number : fractionSize}}
+              </h6>
+              
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | number : fractionSize}}</b>
+              </h6>
+
+            </div>
+
+          </div>
+
+          <div *ngIf="hsl === null">
+            <div>
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | number : fractionSize}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | number : fractionSize}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | number : fractionSize}}</b>
+              </h6>
+            </div>
+          </div>
+
+          <ion-row>
+            <ion-col size="8">
+              <h6 style="margin: 0px 0px 5px 5px;text-align: left;font-size: 11px;" class="wrap-text-auto">
+                {{data.kode_pro}}</h6>
+              <span
+                style="margin:7px;text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;font-size: 12px;">
+                {{data.stok_pro}} Pcs
+              </span>
+            </ion-col>
+            <ion-col size="4">
+              <ion-buttons (click)="insert_cart(data.id_pro, i)"
+                style="background:var(--ion-color-primary);color: #fff;border-radius: 100%;padding: 10px;width: fit-content;">
+                <ion-icon name="cart" style="font-size: 22px;"></ion-icon>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-card style="width: 100%;border-radius: 10px;margin-top: 0px;height: 274px;background: #fff;" *ngIf="valid === gaada">
+          
+          <span *ngIf="data.disc_pro != '0'" style="text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;position: absolute;justify-content: right;margin-top: 8px;font-size: 12px;right: 7px;top: 0px;">
+            {{data.disc_pro}}% OFF
+          </span>
+
+          <img src="{{url}}normal-{{data.nama_gbr_pro}}" onerror="this.src = '/assets/img/no_image.png'" alt="Foto"
+            style="height: 150px;object-fit: cover;width: 100%;" (click)="login()">
+            belom login
+
+            <h6 style="margin: 10px;text-align: left;margin-top: 7px;margin-bottom: 5px;font-weight: 500;"
+            *ngIf="data.set_harga_pro == '1'" class="wrap-text" (click)="login()">
+            {{data.nama_pro}}</h6>
+
+          <div *ngIf="hsl !== null"> 
+            <div *ngIf="data_user.status_pel == 1">
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_jual_pro - ( data.harga_jual_pro * data.disc_pro ) / 100 ) | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_jual_pro | currency : 'IDR' : 'Rp.'}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_jual_pro | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+            </div>
+            <div *ngIf="data_user.status_pel == 2">
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_reseller - ( data.harga_reseller * data.disc_pro ) / 100 ) | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_reseller | currency : 'IDR' : 'Rp.'}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_reseller | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+            </div>
+            <div *ngIf="data_user.status_pel == 0">
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | currency : 'IDR' : 'Rp.'}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+            </div>
+          </div>
+
+          <div *ngIf="hsl == null">
+            <div>
+              <h6 *ngIf="data.disc_pro != '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <ion-icon name="pricetag" style="color: var(--ion-color-primary);"></ion-icon>
+                <b class="warnatextdua">Rp.
+                  {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+              <h6 *ngIf="data.disc_pro != '0'"
+                style="margin: 5px 15px 0px 10px;;text-align: left;text-decoration: line-through;font-size: 11px;">
+                Rp. {{data.harga_user | currency : 'IDR' : 'Rp.'}}
+              </h6>
+              <h6 *ngIf="data.disc_pro == '0'" style="margin: 0px 15px 0px 10px; text-align: left;"
+                class="warnatextdua">
+                <b class="warnatextdua">Rp. {{data.harga_user | currency : 'IDR' : 'Rp.'}}</b>
+              </h6>
+            </div>
+          </div>
+          <ion-row>
+            <ion-col size="8">
+              <h6 style="margin: 0px 0px 5px 5px;text-align: left;font-size: 11px;" class="wrap-text-auto">
+                {{data.kode_pro}}</h6>
+              <span
+                style="margin:7px;text-align: right;background:var(--ion-color-primary);color: #fff;padding: 2px 7px;border-radius: 49px;font-size: 12px;">
+                {{data.stok_pro}} Pcs
+              </span>
+            </ion-col>
+            <ion-col size="4">
+              <ion-buttons (click)="insert_cart(data.id_pro, i)"
+                style="background:var(--ion-color-primary);color: #fff;border-radius: 100%;padding: 10px;width: fit-content;">
+                <ion-icon name="cart" style="font-size: 22px;"></ion-icon>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        -->
+
+
+      </ion-col>
+
+    </ion-row>
+
+    <!-- <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let data of list_product; let i = index;" size="12">
+        <ion-button clear class="btn_cart" (click)="insert_cart(data.id_pro)">
+          <span class="fa fa-shopping-cart" id="icon_cart"></span>
+        </ion-button>
+        <div class="col_product" (click)="goto_detail(data.id_pro)">
+          <ion-row>
+            <ion-col size="4">
+              <div class="div_img">
+                <img (click)="viewDetails(product.id)" class="product-image" src="{{url}}normal-{{data.nama_gbr_pro}}"
+                  onerror="this.src = '/assets/img/no_image.png'">
+              </div>
+            </ion-col>
+            <ion-col *ngIf="data_user.status_pel==1">
+              <div class="content_product">
+                <div class="product_code ">{{data.nama_pro}}</div>
+                <div class="product_name">{{data.kode_pro}}</div>
+              </div>
+              <ion-row>
+                <ion-col class="padding_0 " style="display: flex;">
+                  <div class="product_price" *ngIf="data.disc_pro > 0">
+                    {{ ( data.harga_jual_pro - ( data.harga_jual_pro * data.disc_pro ) / 100 ) | currency : 'IDR' :
+                    'Rp.' }}
+                  </div>
+                  <div class="product_price" *ngIf="data.disc_pro == 0">
+                    {{data.harga_jual_pro | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                  <div class="product_disc font_12" *ngIf="data.disc_pro > 0">{{data.disc_pro}}% OFF</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="padding_0 font_12">
+                  <div class="harga_potongan" *ngIf="data.disc_pro > 0" style="padding-top:5px;">
+                    {{data.harga_jual_pro | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col *ngIf="data_user.status_pel==2">
+              <div class="content_product">
+                <div class="product_code ">{{data.nama_pro}}</div>
+                <div class="product_name">{{data.kode_pro}}</div>
+              </div>
+              <ion-row>
+                <ion-col class="padding_0 " style="display: flex;">
+                  <div class="product_price" *ngIf="data.disc_pro > 0">
+                    {{ ( data.harga_reseller - ( data.harga_reseller * data.disc_pro ) / 100 ) | currency : 'IDR' :
+                    'Rp.' }}
+                  </div>
+                  <div class="product_price" *ngIf="data.disc_pro == 0">
+                    {{data.harga_reseller | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                  <div class="product_disc font_12" *ngIf="data.disc_pro > 0">{{data.disc_pro}}% OFF</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="padding_0 font_12">
+                  <div class="harga_potongan" *ngIf="data.disc_pro > 0" style="padding-top:5px;">
+                    {{data.harga_reseller | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col *ngIf="data_user.status_pel==0">
+              <div class="content_product">
+                <div class="product_code ">{{data.nama_pro}}</div>
+                <div class="product_name">{{data.kode_pro}}</div>
+              </div>
+              <ion-row>
+                <ion-col class="padding_0 " style="display: flex;">
+                  <div class="product_price" *ngIf="data.disc_pro > 0">
+                    {{ ( data.harga_user - ( data.harga_user * data.disc_pro ) / 100 ) | currency : 'IDR' : 'Rp.' }}
+                  </div>
+                  <div class="product_price" *ngIf="data.disc_pro == 0">
+                    {{data.harga_user | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                  <div class="product_disc font_12" *ngIf="data.disc_pro > 0">{{data.disc_pro}}% OFF</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="padding_0 font_12">
+                  <div class="harga_potongan" *ngIf="data.disc_pro > 0" style="padding-top:5px;">
+                    {{data.harga_user | currency : 'IDR' : 'Rp.'}}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+    <ion-infinite-scroll (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Memuat Produk...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="bottom:9px;z-index: 999;" edge > 
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang > 0 ">{{total_keranjang}}</ion-badge>
+    <ion-badge class="badge_icon" color="danger" *ngIf="total_keranjang == 0 ">0</ion-badge>
+    <ion-fab-button>
+        <img src="assets/imgs/bag.png">
+    </ion-fab-button>
+</ion-fab>
+</ion-content>

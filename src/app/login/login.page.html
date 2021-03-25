@@ -1,0 +1,49 @@
+
+<ion-header>
+  <ion-toolbar style="--background: var(--ion-color-primary);">
+      <ion-buttons slot="start" style="color: #fff;">
+          <ion-back-button (click)="back()" src="/assets/icon/chevron-back-outline.svg"></ion-back-button>
+      </ion-buttons>
+      <ion-title style="color: #fff;margin-top: 5px;">Masuk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-color-bg);">
+  <!-- <ion-row>
+    <h6>Silahkan Masuk / Registrasi Untuk Melanjutkan</h6>
+  </ion-row> -->
+  <ion-row style="text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 15% 8%;border-radius: 20px;">
+    
+    <ion-col size="12">
+      <h5 style="margin: 0px;"><b style="color: #fff;">LOGIN</b></h5>
+    </ion-col>
+    <ion-card style="margin: auto;padding: 0px;border-radius: 30px;margin-top: 10px;width: 100%;">
+      <ion-item lines="none" style="height: 40px;">
+        <ion-input type="email" placeholder="Email" [(ngModel)]="login.username" autofocus="true" 
+        style="margin-bottom: 7px;">
+        </ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card style="margin: auto;padding: 0px;border-radius: 30px;margin-top: 10px;width: 100%;">
+      <ion-item lines="none" style="height: 40px;">
+        <ion-input type="password" placeholder="Password" [(ngModel)]="login.password" style="margin-bottom: 7px;">
+        </ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-col size="12" style="text-align: right;" (click)="lupa_password()">
+      <h6 style="color: #fff;">Lupa Password?</h6>
+    </ion-col>
+    <ion-button size="small" expand="block" fill="outline" class="btn" (click)="onLogin()"
+    style="height: 37px;background: var(--ion-color-secondary);width: 100%;border-radius: 20px;">
+    <h6 style="color: #fff;font-weight: 500;font-size: 15px;text-transform: none;" *ngIf="!isLogin">
+      Masuk
+    </h6>
+    <ion-spinner name="circles" *ngIf="isLogin" color="light" style="color: #fff;"></ion-spinner>
+  </ion-button>
+    <ion-col size="12" style="text-align: center;" (click)="daftar()">
+      <h6 style="color: #fff;margin: 0px;">Belum Punya akun? <b style="color: #fff;">Daftar</b></h6>
+    </ion-col>
+  
+  </ion-row>
+</ion-content>

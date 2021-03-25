@@ -1,0 +1,165 @@
+product{
+    font-size: 14px;
+}
+#avatar_product{
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+#icon_cart{
+    color : #e29a9c;
+}
+
+.toolbar-background{
+    background: var(--ion-color-primary) !important;
+    --background: var(--ion-color-primary) !important;
+}
+
+ion-toolbar {
+    background: var(--ion-color-primary) !important;
+    --background: var(--ion-color-primary) !important;
+
+
+    .notification-icon-button {
+        .btn_badge {
+            --overflow: visible;
+        
+            ion-badge {
+                position: absolute;
+                background: #f70b0b;
+                border-radius: 50%;
+                opacity: 0.9;
+                top: -4px;
+                right: -3px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+        }
+    }
+  }
+.font_12{
+    font-size: 12px;
+}
+.padding_0{
+    padding: 0px;
+}
+.harga_potongan{
+    color:red;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+.product_disc{
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 2px;
+}
+#nama_product{
+    width:100%;
+    margin-top:10px;
+    font-weight: bold;
+    font-size:15px;
+    white-space: normal;
+    color:#7e7e7e;
+}
+
+.content_product{
+    width: 100%;
+    padding-top : 5px;
+    // border : 1px solid #d4cece;
+    // background-color: #7e7e7e;
+}
+.product_price{
+    font-weight: bold;
+    color : #ccaa52;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.div_img{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.product_name{
+    white-space: normal;
+    width: 100%;
+    margin-bottom : 5px;
+    font-size: 12px;
+}
+.product-image
+{
+	width: 100%;
+}
+.col_product{
+    border : 1px solid #d4cece;
+    border-radius: 5px;   
+    margin-bottom: 10px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);     
+}
+.small-content{
+    width: 95%;
+	// height: 110px;   
+	// background-color: #FAEBD7;
+}
+.results-div{
+
+	border-bottom: 5%;
+
+	.results{
+		text-align: center;
+	}
+}
+
+
+.card-title{
+  font-size: 12px;
+  text-align: center;
+	height: 20px;
+}
+
+.product-description
+{
+    text-align: center;
+	font-size: 15px;
+	margin: 2px 0px 0px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+
+	.actual-price
+	{
+		font-weight: 500;
+	}
+
+	.previous-price
+	{
+		text-decoration: line-through;
+
+		&::before
+		{
+			content: '';
+			width: 0px;
+			height: 100%;
+			border-right: solid 2px;
+		    margin: 0px 6px 0px 3px;
+		}
+	}
+}
+
+.searchbar-input.sc-ion-searchbar-md{
+    --border-radius: 20px !important;
+}
+
+ion-badge {
+    position: absolute;
+    background: #f70b0b;
+    border-radius: 50%;
+    opacity: 0.9;
+    top: -9px;
+    // left: 18px;
+    right: 17px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    z-index: 9;
+}

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   restURL: {
-    baseUrl: 'https://dafacollection.net/app/',
-    imagePath: 'https://dafacollection.net/gambar/produk/'
+    baseUrl: 'https://shop.uniarch.id/app/',
+    imagePath: 'https://shop.uniarch.id/gambar/produk/'
   },
 };

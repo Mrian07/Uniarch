@@ -1,16 +1,9 @@
 import { Injectable } from '@angular/core';
-// development
-// export let API_URL='http://172.20.10.5/msi2/app/';
-// export let API_URL_SLIDER='http://172.20.10.5/msi2/app/';
-// export let IMAGE_URL_PRODUCT='http://172.20.10.5/msi2/gambar/produk/';
-// production
+
 export let API_RAJAONKIR='';
-export let BASE_URL = 'https://dafacollection.net/';
-// export let API_URL = 'https://msidahua.com/app/';
+export let BASE_URL = 'https://shop.uniarch.id/';
 export let API_URL = BASE_URL + 'app/';
-// export let API_URL_SLIDER='https://msidahua.com/app/';
 export let API_URL_SLIDER = API_URL;
-// export let IMAGE_URL_PRODUCT='https://msidahua.com/gambar/produk/';
 export let IMAGE_URL_PRODUCT = BASE_URL + 'gambar/produk/';
 
 import { HttpClient } from '@angular/common/http';
@@ -18,7 +11,6 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlertController, IonList, LoadingController, ModalController, NavController, ToastController, Config } from '@ionic/angular';
 
-// export let API_URL='http://192.168.43.80/customerloyalty/rest/';
 @Injectable({
   providedIn: 'root'
 })

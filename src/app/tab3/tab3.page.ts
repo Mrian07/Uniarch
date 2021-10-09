@@ -140,27 +140,23 @@ export class Tab3Page {
     if (this.list_detail[index].qty_pro == 1) {
       // this.sub_total_real[index] = this.input_qty[index] * this.harga_pro_real[index];
       // this.list_detail[index].input_qty++;
-      this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].varianx.harga_varian;
+      this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
       this.calculate_total();
       return false;
     } else {
       // this.input_qty[index]--;
       // this.sub_total_real[index] = this.input_qty[index] * this.harga_pro_real[index];
       this.list_detail[index].qty_pro--;
-      this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].varianx.harga_varian;
+      this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
       this.calculate_total();
 
     }
   }
 
-async pilih_varian(index) {
-
-  console.log(this.list_detail[index].qty_pro);
-  console.log(this.list_detail[index].varianx.harga_varian);
-
-  this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].varianx.harga_varian;
-  this.calculate_total();
-
+  add_plus(index) {
+    this.list_detail[index].qty_pro++;
+    this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
+    this.calculate_total();
   }
 
   async hapus_keranjang(){
@@ -229,11 +225,7 @@ async pilih_varian(index) {
     ;
   }
 
-  add_plus(index) {
-    this.list_detail[index].qty_pro++;
-    this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].varianx.harga_varian;
-    this.calculate_total();
-  }
+  
 
   ke_pengiriman(){
     let count : any = 0;

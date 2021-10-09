@@ -4,13 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlertController, IonList, LoadingController, ModalController, NavController, ToastController, Config, IonSlides } from '@ionic/angular';
-// import { ProductFilterPage } from '../../product-filter/product-filter.page';
 import { Router } from '@angular/router';
 import { DataCartService } from '../services/data-cart.service';
-// import { NgxCommunicateService } from 'ngx-communicate';
 import { UserData } from '../providers/user-data';
-// import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
-// import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-tab2',

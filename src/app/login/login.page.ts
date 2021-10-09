@@ -145,24 +145,14 @@ export class LoginPage {
 
           localStorage.setItem('akses', JSON.stringify(logindata));
           localStorage.setItem('userid', this.info.id_pel);
-          
-          //this.oneSignal.sendTag('id_pel', this.hasil.id_pel);
 
           this.userData.login(this.hasil).then(hasl => { 
 
             this.loading.dismiss();
 
-            // this.communicate.broadcast('login_success', 'login_success');
-
             this.util.showToast('Berhasil Login', 'success', 'bottom');
 
-            // this.router.navigateByUrl('');
             this.router.navigateByUrl('/tabs/tab1');
-
-            //this.router.navigate(['/tabs/tab1'])
-              //.then(() => {
-                //window.location.reload();
-            //});
 
           });
         }else{ 
@@ -188,13 +178,7 @@ export class LoginPage {
             console.log('Confirm Cancel: blah');
           }
         }, 
-        // {
-        //   text: 'Yes',
-        //   handler: () => {
-        //     let url = 'https://api.whatsapp.com/send?phone=+6281292926955';   
-        //     window.open(url, '_system','location=yes');
-        //   }
-        // }
+       
       ]
     });
 
@@ -221,48 +205,6 @@ export class LoginPage {
     
   }
 
-  // ngOnInit() {
-  // }
 
-  // login() {
-  //   if (this.email == '') {
-  //     this.util.showWarningAlert('Email Wajib Diisi');
-  //     return false;
-  //   }
-  //   if (this.password == '') {
-  //     this.util.showWarningAlert('Password Wajib Diisi');
-  //     return false;
-  //   } else {
-  //     this.isLogin = true;
-  //     const headers = { 'Content-Type': 'application/json' };
-  //     const param = {
-  //      email: this.email,
-  //      password: this.password
-  //     };
-  //     this.http2.post(this.baseUrl + 'api_login', {email : this.email, password : this.password} , {})
-  //     .subscribe(( data ) => {
-  //       console.log(data); 
-  //       this.isLogin = false;
-  //       console.log('form', param);
-  //       this.info = data;
-  //       console.log('info', this.info);
-  //       if (this.info && this.info.status == 'berhasil') {
-  //         console.log('INFO DATA', this.info);
-  //         console.log('id_pel', this.info.id_pel);
-  //         var logindata = JSON.parse(localStorage.getItem('akses')) || [];
-  //        logindata.push(this.info);
-  //        localStorage.setItem('akses', JSON.stringify(logindata));
-  //         localStorage.setItem('userid', this.info.id_pel);
-  //         this.util.showToast(`${this.info.msg}`, 'success', 'bottom');
-  //         this.navCtrl.pop();
-  //       } else {
-  //         this.util.showToast(`${this.info.msg}`, 'danger', 'bottom');
-  //       }
-  //     });
-  //   }
-  // }
-  // sign_up() {
-  //   this.route.navigate(['./sign-up']);
-  // }
 
 }

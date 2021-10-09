@@ -679,7 +679,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div id=\"container\">\r\n  <strong>{{ name }}</strong>\r\n  <p>Explore <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ionicframework.com/docs/components\">UI Components</a></p>\r\n</div>";
+      __webpack_exports__["default"] = "<div id=\"container\">\n  <strong>{{ name }}</strong>\n  <p>Explore <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://ionicframework.com/docs/components\">UI Components</a></p>\n</div>";
       /***/
     },
 
@@ -699,7 +699,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n#container strong {\n  font-size: 20px;\n  line-height: 26px;\n}\n\n#container p {\n  font-size: 16px;\n  line-height: 22px;\n  color: #8c8c8c;\n  margin: 0;\n}\n\n#container a {\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwbG9yZS1jb250YWluZXIvZXhwbG9yZS1jb250YWluZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUVBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxRQUFBO0VBQ0EsMkJBQUE7QUFBRjs7QUFHQTtFQUNFLGVBQUE7RUFDQSxpQkFBQTtBQUFGOztBQUdBO0VBQ0UsZUFBQTtFQUNBLGlCQUFBO0VBRUEsY0FBQTtFQUVBLFNBQUE7QUFGRjs7QUFLQTtFQUNFLHFCQUFBO0FBRkYiLCJmaWxlIjoic3JjL2FwcC9leHBsb3JlLWNvbnRhaW5lci9leHBsb3JlLWNvbnRhaW5lci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuXHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIGxlZnQ6IDA7XHJcbiAgcmlnaHQ6IDA7XHJcbiAgdG9wOiA1MCU7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC01MCUpO1xyXG59XHJcblxyXG4jY29udGFpbmVyIHN0cm9uZyB7XHJcbiAgZm9udC1zaXplOiAyMHB4O1xyXG4gIGxpbmUtaGVpZ2h0OiAyNnB4O1xyXG59XHJcblxyXG4jY29udGFpbmVyIHAge1xyXG4gIGZvbnQtc2l6ZTogMTZweDtcclxuICBsaW5lLWhlaWdodDogMjJweDtcclxuXHJcbiAgY29sb3I6ICM4YzhjOGM7XHJcblxyXG4gIG1hcmdpbjogMDtcclxufVxyXG5cclxuI2NvbnRhaW5lciBhIHtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbn0iXX0= */";
+      __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n#container strong {\n  font-size: 20px;\n  line-height: 26px;\n}\n\n#container p {\n  font-size: 16px;\n  line-height: 22px;\n  color: #8c8c8c;\n  margin: 0;\n}\n\n#container a {\n  text-decoration: none;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwbG9yZS1jb250YWluZXIvZXhwbG9yZS1jb250YWluZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFFbEIsa0JBQWtCO0VBQ2xCLE9BQU87RUFDUCxRQUFRO0VBQ1IsUUFBUTtFQUNSLDJCQUEyQjtBQUE3Qjs7QUFHQTtFQUNFLGVBQWU7RUFDZixpQkFBaUI7QUFBbkI7O0FBR0E7RUFDRSxlQUFlO0VBQ2YsaUJBQWlCO0VBRWpCLGNBQWM7RUFFZCxTQUFTO0FBRlg7O0FBS0E7RUFDRSxxQkFBcUI7QUFGdkIiLCJmaWxlIjoic3JjL2FwcC9leHBsb3JlLWNvbnRhaW5lci9leHBsb3JlLWNvbnRhaW5lci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgdG9wOiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTtcbn1cblxuI2NvbnRhaW5lciBzdHJvbmcge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGxpbmUtaGVpZ2h0OiAyNnB4O1xufVxuXG4jY29udGFpbmVyIHAge1xuICBmb250LXNpemU6IDE2cHg7XG4gIGxpbmUtaGVpZ2h0OiAyMnB4O1xuXG4gIGNvbG9yOiAjOGM4YzhjO1xuXG4gIG1hcmdpbjogMDtcbn1cblxuI2NvbnRhaW5lciBhIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufSJdfQ== */";
       /***/
     },
 
@@ -838,369 +838,6 @@
     },
 
     /***/
-    "./src/app/services/data-cart.service.ts":
-    /*!***********************************************!*\
-      !*** ./src/app/services/data-cart.service.ts ***!
-      \***********************************************/
-
-    /*! exports provided: DataCartService */
-
-    /***/
-    function srcAppServicesDataCartServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "DataCartService", function () {
-        return DataCartService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/common/http */
-      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-      /* harmony import */
-
-
-      var _providers_constant_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ../providers/constant.service */
-      "./src/app/providers/constant.service.ts");
-
-      var DataCartService = /*#__PURE__*/function () {
-        function DataCartService(http) {
-          _classCallCheck(this, DataCartService);
-
-          this.http = http;
-        }
-
-        _createClass(DataCartService, [{
-          key: "save_keranjang",
-          value: function save_keranjang(id_pro, id_pel, id_varian, qty_pro) {
-            var _this = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'save_keranjang', {
-                id_pro: id_pro,
-                id_pel: id_pel,
-                id_varian: id_varian,
-                qty_pro: qty_pro
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "update_keranjang",
-          value: function update_keranjang(id_pel, data_product) {
-            var _this2 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this2.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_update_keranjang', {
-                id_pel: id_pel,
-                data_cart: data_product
-              }).subscribe(function (hasil) {
-                console.log('hasil', 'hasil');
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "hapus_keranjang",
-          value: function hapus_keranjang(id_pel, data_product) {
-            var _this3 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this3.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_hapus_keranjang', {
-                id_pel: id_pel,
-                data_cart: data_product
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_keranjang",
-          value: function get_keranjang(id_pel) {
-            var _this4 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this4.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_get_data_keranjang', {
-                id_pel: id_pel
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_rajaongkir_provinsi",
-          value: function get_rajaongkir_provinsi() {
-            var _this5 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this5.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_provinsi', {}).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_rajaongkir_kota",
-          value: function get_rajaongkir_kota(id_provinsi) {
-            var _this6 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this6.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_kota', {
-                id_provinsi: id_provinsi
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_rajaongkir_kecamatan",
-          value: function get_rajaongkir_kecamatan(id_kota) {
-            var _this7 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this7.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_kecamatan', {
-                id_kota: id_kota
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_rajaongkir_harga",
-          value: function get_rajaongkir_harga(id_kecamatan, kurir) {
-            var _this8 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this8.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_harga', {
-                id_kecamatan: id_kecamatan,
-                kurir: kurir
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "get_rajaongkir_summary",
-          value: function get_rajaongkir_summary(cost, id_pel, potongan) {
-            var _this9 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this9.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_summary', {
-                cost: cost,
-                id_pel: id_pel,
-                potongan: potongan
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          } //   id_pel: 60
-          // paket: OKE
-          // perkilo: 23000
-          // kurir: jne
-          // nama: sabar
-          // telepon: 087878825659
-          // nama_pengirim: 
-          // no_pengirim: 
-          // pilihan_form: 1
-          // ongkir_provinsi: Jawa Timur
-          // ongkir_kota: Kab. Bangkalan
-          // ongkir_kecamatan: Kwanyar
-          // alamat: funyok
-          // alamat_pengirim: 
-
-        }, {
-          key: "get_rajaongkir_save_pengiriman",
-          value: function get_rajaongkir_save_pengiriman(id_pel, email, paket, perkilo, kurir, nama, telepon, nama_pengirim, no_pengirim, pilihan_form, ongkir_provinsi, ongkir_kota, ongkir_kecamatan, alamat, alamat_pengirim, catatan, potongan, stock_kupon) {
-            var _this10 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this10.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_save_pengiriman', {
-                id_pel: id_pel,
-                email: email,
-                paket: paket,
-                perkilo: perkilo,
-                kurir: kurir,
-                nama: nama,
-                telepon: telepon,
-                nama_pengirim: nama_pengirim,
-                no_pengirim: no_pengirim,
-                pilihan_form: pilihan_form,
-                ongkir_provinsi: ongkir_provinsi,
-                ongkir_kota: ongkir_kota,
-                ongkir_kecamatan: ongkir_kecamatan,
-                alamat: alamat,
-                alamat_pengirim: alamat_pengirim,
-                catatan: catatan,
-                potongan: potongan,
-                stock_kupon: stock_kupon
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              }, function (error) {
-                resolve(JSON.parse(error['error']['text'].slice(error['error']['text'].length - 274, error['error']['text'].length)));
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "master_pengiriman",
-          value: function master_pengiriman(id_pel) {
-            var _this11 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this11.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_master_pengiriman', {
-                id_pel: id_pel
-              }).subscribe(function (hasil) {
-                //console.log('hasil', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "getkupon",
-          value: function getkupon(kode) {
-            var _this12 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this12.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'get_kupon', {
-                kode: kode
-              }).subscribe(function (hasil) {
-                //console.log('kupon', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "getHadiah",
-          value: function getHadiah(kode_pel) {
-            var _this13 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this13.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'get_list_poin', {
-                kode_pel: kode_pel
-              }).subscribe(function (hasil) {
-                //console.log('hadiah', 'hasil')
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "getRiwayat",
-          value: function getRiwayat(kode_pel) {
-            var _this14 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this14.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'get_riwayat_reward', {
-                kode_pel: kode_pel
-              }).subscribe(function (hasil) {
-                console.log('hadiah', 'hasil');
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "getPoin",
-          value: function getPoin(kode_pel) {
-            var _this15 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this15.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'get_poin', {
-                kode_pel: kode_pel
-              }).subscribe(function (hasil) {
-                console.log('hadiah', 'hasil');
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "getDetailReward",
-          value: function getDetailReward(kode_reward) {
-            var _this16 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this16.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'get_detail_reward', {
-                kode_reward: kode_reward
-              }).subscribe(function (hasil) {
-                console.log('hadiah', 'hasil');
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }, {
-          key: "insertPenukaran",
-          value: function insertPenukaran(kode_reward, kode_pel) {
-            var _this17 = this;
-
-            var promise = new Promise(function (resolve, reject) {
-              _this17.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'insert_penukaran', {
-                kode_reward: kode_reward,
-                kode_pel: kode_pel
-              }).subscribe(function (hasil) {
-                console.log('hadiah', 'hasil');
-                resolve(hasil);
-              });
-            });
-            return promise;
-          }
-        }]);
-
-        return DataCartService;
-      }();
-
-      DataCartService.ctorParameters = function () {
-        return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-        }];
-      };
-
-      DataCartService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-      })], DataCartService);
-      /***/
-    },
-
-    /***/
     "./src/app/services/product.service.ts":
     /*!*********************************************!*\
       !*** ./src/app/services/product.service.ts ***!
@@ -1254,10 +891,10 @@
         _createClass(ProductService, [{
           key: "get_product_detail",
           value: function get_product_detail(id_pro) {
-            var _this18 = this;
+            var _this = this;
 
             var promise = new Promise(function (resolve, reject) {
-              _this18.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_get_product_detail', {
+              _this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_3__["API_URL"] + 'api_get_product_detail', {
                 id_pro: id_pro
               }).subscribe(function (hasil) {
                 console.log('product detail result', hasil);
@@ -1343,7 +980,7 @@
           key: "show",
           value: function show(msg) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-              var _this19 = this;
+              var _this2 = this;
 
               return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
@@ -1357,7 +994,7 @@
                       }).then(function (a) {
                         a.present().then(function () {
                           //console.log('presented');
-                          if (!_this19.isLoading) {
+                          if (!_this2.isLoading) {
                             a.dismiss().then(function () {
                               return console.log('abort presenting');
                             });

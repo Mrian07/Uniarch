@@ -41,16 +41,6 @@
               -webkit-box-orient: vertical;">{{item.nama_pro}}</h5>
               <p>
                 {{item.qty_pro}} x {{item.harga_pro}}
-
-                
-                <ion-item>
-                  <ion-label position="floating" color="primary">Varian</ion-label>
-                  <ion-select [(ngModel)]="item.varianx" name="varian" type="text" (ionChange)="pilih_varian(i)" style="background-color: #cccccc40;border-radius: 5px;padding: 10px;" required>
-                      <ion-select-option *ngFor=" let varian of item.varian " [value]="varian">{{varian.nama_varian}}</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                
-
               </p>
             </ion-col>
 

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\" style=\"color: #fff;\">\r\n      <ion-back-button defaultHref=\"/login\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"color: #fff;\">Lupa Password</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content style=\"--background: var(--ion-color-bg);\">\r\n\r\n  <!-- <div style=\"width: 100%;text-align:center;margin-top: 60px; margin-bottom: 30px;\">\r\n    <img src=\"assets/img/logo.png\" style=\"width:180px;\" alt=\"Ionic logo\">\r\n  </div> -->\r\n  <div style=\"text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;\">\r\n    <div style=\"margin-bottom: 20px;\">\r\n      <h5 style=\"margin: 0px;\"><b style=\"color: #fff;\">Lupa Password</b></h5>\r\n    </div>\r\n    <br>\r\n  <form #signupForm=\"ngForm\" novalidate>\r\n    <ion-list lines=\"none\" style=\"border-radius: 20px;\">\r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Email</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.email\" name=\"email\" type=\"email\" placeholder=\"Silahkan masukkan email anda\" #email=\"ngModel\" required>\r\n          </ion-input>\r\n        </ion-item> \r\n        <ion-item>\r\n          <ion-button (click)=\"kirim_kode()\">Kirim Kode</ion-button>\r\n        </ion-item> \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Kode Unik</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.kode_unik\" name=\"kode_unik\" type=\"text\" placeholder=\"Silahkan masukkan kode unik\" #email=\"ngModel\" required>\r\n          </ion-input>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-button (click)=\"reset_password()\" color=\"light\"\r\n          style=\"--border-radius:15px;\">Reset Password</ion-button>\r\n        </ion-item>                             \r\n    </ion-list>\r\n  </form>\r\n  </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\" style=\"color: #fff;\">\n      <ion-back-button defaultHref=\"/login\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color: #fff;\">Lupa Password</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content style=\"--background: var(--ion-color-bg);\">\n\n  <!-- <div style=\"width: 100%;text-align:center;margin-top: 60px; margin-bottom: 30px;\">\n    <img src=\"assets/img/logo.png\" style=\"width:180px;\" alt=\"Ionic logo\">\n  </div> -->\n  <div style=\"text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;\">\n    <div style=\"margin-bottom: 20px;\">\n      <h5 style=\"margin: 0px;\"><b style=\"color: #fff;\">Lupa Password</b></h5>\n    </div>\n    <br>\n  <form #signupForm=\"ngForm\" novalidate>\n    <ion-list lines=\"none\" style=\"border-radius: 20px;\">\n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Email</ion-label>\n          <ion-input [(ngModel)]=\"signup.email\" name=\"email\" type=\"email\" placeholder=\"Silahkan masukkan email anda\" #email=\"ngModel\" required>\n          </ion-input>\n        </ion-item> \n        <ion-item>\n          <ion-button (click)=\"kirim_kode()\">Kirim Kode</ion-button>\n        </ion-item> \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Kode Unik</ion-label>\n          <ion-input [(ngModel)]=\"signup.kode_unik\" name=\"kode_unik\" type=\"text\" placeholder=\"Silahkan masukkan kode unik\" #email=\"ngModel\" required>\n          </ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-button (click)=\"reset_password()\" color=\"light\"\n          style=\"--border-radius:15px;\">Reset Password</ion-button>\n        </ion-item>                             \n    </ion-list>\n  </form>\n  </div>\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -222,6 +222,245 @@ LupaPasswordPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./lupa-password.page.scss */ "./src/app/lupa-password/lupa-password.page.scss")).default]
     })
 ], LupaPasswordPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/providers/user-data.ts":
+/*!****************************************!*\
+  !*** ./src/app/providers/user-data.ts ***!
+  \****************************************/
+/*! exports provided: UserData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserData", function() { return UserData; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _providers_constant_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../providers/constant.service */ "./src/app/providers/constant.service.ts");
+
+
+
+// import { HTTP } from '@ionic-native/http/ngx';
+
+
+
+
+
+let UserData = class UserData {
+    constructor(storage, http, platform, router) {
+        this.storage = storage;
+        this.http = http;
+        this.platform = platform;
+        this.router = router;
+        this._favorites = [];
+        this.session = {};
+        this.HAS_LOGGED_IN = 'hasLoggedIn';
+        this.HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+        this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
+        this.platform.ready().then(() => {
+            this.isLoggedIn();
+        });
+    }
+    isAuthenticated() {
+        console.log(this.authState.value, 'value');
+        return this.authState.value;
+        // if(this.authState.value==false){
+        //   this.router.navigate(['login']);
+        // }else{
+        //   // this.router.navigate(['checkout']);
+        // }
+    }
+    hasFavorite(sessionName) {
+        return (this._favorites.indexOf(sessionName) > -1);
+    }
+    addFavorite(sessionName) {
+        this._favorites.push(sessionName);
+    }
+    removeFavorite(sessionName) {
+        const index = this._favorites.indexOf(sessionName);
+        if (index > -1) {
+            this._favorites.splice(index, 1);
+        }
+    }
+    login(username) {
+        console.log(username, 'USERNAME');
+        return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
+            this.setUsername(username);
+            // this.http.get(this.API_URL + 'login', {}, {})
+            // .then(data => {
+            //   console.log(data.status);
+            //   console.log(data.data); // data received by server
+            //   console.log(data.headers);
+            // })
+            // .catch(error => {
+            //   console.log(error.status);
+            //   console.log(error.error); // error message as string
+            //   console.log(error.headers);
+            // });      
+            return window.dispatchEvent(new CustomEvent('user:login'));
+        });
+    }
+    signup(username) {
+        return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
+            this.setUsername(username);
+            return window.dispatchEvent(new CustomEvent('user:signup'));
+        });
+    }
+    logout() {
+        return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
+            this.authState.next(false);
+            return this.storage.remove('username');
+        }).then(() => {
+            window.dispatchEvent(new CustomEvent('user:logout'));
+        });
+    }
+    setUsername(username) {
+        return this.storage.set('username', username);
+    }
+    set_referral(referral) {
+        console.log(referral, 'REFERRAL SET');
+        return this.storage.set('referral', referral);
+    }
+    get_referral() {
+        return this.storage.get('referral').then((value) => {
+            console.log(value, 'REFERRAL SET');
+            return value;
+        });
+    }
+    getUsername() {
+        return this.storage.get('username').then((value) => {
+            return value;
+        });
+    }
+    isLoggedIn() {
+        return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
+            this.authState.next(true);
+            return value === true;
+        });
+    }
+    checkHasSeenTutorial() {
+        return this.storage.get(this.HAS_SEEN_TUTORIAL).then((value) => {
+            return value;
+        });
+    }
+    // CUSTOMER LOYALTY
+    set_photo_profile(photo_profile) {
+        return this.getUsername().then(hsl => {
+            this.session = hsl;
+            this.session.photo = photo_profile;
+            this.setUsername(this.session);
+        });
+    }
+    get_photo_profile() {
+        return this.getUsername().then(hsl => {
+            this.session = hsl;
+            return this.session.photo;
+        });
+    }
+    get_data_provinsi() {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_provinsi', {})
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    get_data_kota(provinsi) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_kota', { provinsi: provinsi })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    get_data_kecamatan(kota) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_kecamatan', { kota: kota })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    short_url(url) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_short_url', { url: url })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    submit_pendaftaran(nama_pel, email_pel, pass_pel, kon_pass, no_telp_pel, provinsi, kota, kecamatan, alamat_pel, jk_pel, referral) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_submit_pendaftaran', {
+                nama_pel: nama_pel,
+                email_pel: email_pel,
+                pass_pel: pass_pel,
+                kon_pass: kon_pass,
+                no_telp_pel: no_telp_pel,
+                provinsi: provinsi,
+                kota: kota,
+                kecamatan: kecamatan,
+                alamat_pel: alamat_pel,
+                jk_pel: jk_pel,
+                id_ref: referral
+            })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    update_profile(nama_pel, email_pel, pass_pel, kon_pass, no_telp_pel, provinsi, kota, kecamatan, alamat_pel, jk_pel, id_pel, info_lain_pel, nama_bank, rek, an) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_update_pel', {
+                nama_pel: nama_pel,
+                email_pel: email_pel,
+                pass_pel: pass_pel,
+                kon_pass: kon_pass,
+                no_telp_pel: no_telp_pel,
+                provinsi: provinsi,
+                kota: kota,
+                kecamatan: kecamatan,
+                alamat_pel: alamat_pel,
+                jk_pel: jk_pel,
+                id_pel: id_pel, info_lain_pel: info_lain_pel, nama_bank: nama_bank, rek: rek, an: an
+            })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+};
+UserData.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
+UserData = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], UserData);
 
 
 

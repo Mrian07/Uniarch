@@ -15,7 +15,8 @@ import { Toast } from '@ionic-native/toast/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 
 
 @NgModule({
@@ -29,15 +30,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     IonicModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    SocialSharing,
-    Clipboard,
-    Camera,
-    Toast,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+  providers: [InAppBrowser, SplashScreen, StatusBar, Camera, SocialSharing, Clipboard, Toast, FCM],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

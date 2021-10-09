@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\" style=\"color: #fff;\">\r\n      <ion-back-button defaultHref=\"/riwayat-order\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"color: #fff;\">Konfirmasi</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> \r\n\r\n<ion-content [fullscreen]=\"true\" style=\"--background: var(--ion-color-bg);\">\r\n\r\n  <div style=\"text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;\">\r\n    <div style=\"margin-bottom: 20px;\">\r\n      <h6 style=\"margin: 0px;\"><b style=\"color: #fff;\">Konfirmasi Transfer Bank</b></h6>\r\n    </div>\r\n    <br>\r\n  <form #signupForm=\"ngForm\" novalidate>\r\n    <ion-list lines=\"none\" style=\"border-radius: 20px;\">\r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">ID Order</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.id_order\" name=\"id_order\" type=\"text\" #id_order=\"ngModel\" readonly required>\r\n          </ion-input>\r\n        </ion-item> \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Nama Pemilik Rekening</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.nama_pemilik\" name=\"nama_pemilik\" type=\"text\" #nama_pemilik=\"ngModel\" required>\r\n          </ion-input>\r\n        </ion-item>  \r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"nama_pemilik.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Nama Pemilik Rekening tidak boleh kosong\r\n          </p>\r\n        </ion-text>                       \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Dari Bank</ion-label>\r\n          <ion-select [(ngModel)]=\"signup.dari_bank\" name=\"dari_bank\" type=\"text\" #dari_bank=\"ngModel\" required>\r\n              <ion-select-option value=\"L\">Bank Central Asia</ion-select-option>\r\n              <ion-select-option value=\"P\">Bank Lainnya</ion-select-option>\r\n          </ion-select>\r\n        </ion-item>\r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"dari_bank.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Dari Bank tidak boleh kosong\r\n          </p>\r\n        </ion-text>         \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Ke Bank</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.ke_bank\" name=\"ke_bank\" type=\"text\" #ke_bank=\"ngModel\" readonly required>\r\n          </ion-input>\r\n        </ion-item>         \r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"ke_bank.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Ke Bank tidak boleh kosong\r\n          </p>\r\n        </ion-text>         \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Jumlah Dana</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.jumlah_dana\" name=\"jumlah_dana\" type=\"number\" #jumlah_dana=\"ngModel\" required>\r\n          </ion-input>\r\n        </ion-item>  \r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"jumlah_dana.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Jumlah Dana tidak boleh kosong\r\n          </p>\r\n        </ion-text>  \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Tanggal Pembayaran</ion-label>\r\n          <!-- <ion-input [(ngModel)]=\"signup.tanggal_pembayaran\" name=\"tanggal_pembayaran\" type=\"date\" #tanggal_pembayaran=\"ngModel\" required>\r\n          </ion-input> -->\r\n          <ion-datetime displayFormat=\"DD/MM/YYYY\" placeholder=\"Pilih Tanggal\" [(ngModel)]=\"signup.tanggal_pembayaran\" name=\"tanggal_pembayaran\"\r\n          #tanggal_pembayaran=\"ngModel\" required\r\n          cancelText=\"Batal\" doneText=\"Pilih\"></ion-datetime>\r\n        </ion-item>  \r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"tanggal_pembayaran.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Tanggal Pembayaran tidak boleh kosong\r\n          </p>\r\n        </ion-text>  \r\n        <ion-item>\r\n          <ion-label position=\"stacked\" color=\"primary\">Bukti Foto</ion-label>\r\n          <ion-input [(ngModel)]=\"signup.bukti\" name=\"bukti\" type=\"hidden\" #bukti=\"ngModel\" required></ion-input>\r\n        </ion-item> \r\n\r\n        <ion-text color=\"danger\">\r\n          <p [hidden]=\"tanggal_pembayaran.valid || submitted == false\" class=\"ion-padding-start\">\r\n            Bukti Foto tidak boleh kosong\r\n          </p>\r\n        </ion-text>  \r\n        <div style=\"width: 100%;text-align: center;\" (click)=\"upload_bukti()\">\r\n          <div style=\"width: 80%;border:2px dashed#c4c4c4;margin:0 auto;border-radius: 20px;\">\r\n            <img class=\"product-image\" style=\"height: 120px;\" src=\"{{signup.bukti}}\" onerror=\"this.src = '/assets/img/no_image.png'\">\r\n          </div>         \r\n        </div>                                  \r\n    </ion-list>\r\n    <!-- <ion-grid>\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-button expand=\"full\" (click)=\"upload_bukti()\" color=\"light\" style=\"--border-radius:20px\">\r\n            Upload Bukti</ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid> -->\r\n    <div>\r\n      <ion-button (click)=\"onSignup(signupForm)\" type=\"submit\" color=\"light\" expand=\"block\"\r\n      style=\"--border-radius:20px\"><b style=\"color: var(--ion-color-primary);\">Submit</b></ion-button>\r\n    </div>\r\n  </form>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\" style=\"color: #fff;\">\n      <ion-back-button defaultHref=\"/riwayat-order\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color: #fff;\">Konfirmasi</ion-title>\n  </ion-toolbar>\n</ion-header> \n\n<ion-content [fullscreen]=\"true\" style=\"--background: var(--ion-color-bg);\">\n\n  <div style=\"text-align: center;padding: 20px;background: var(--ion-color-primary);margin: 3% 3%;border-radius: 20px;\">\n    <div style=\"margin-bottom: 20px;\">\n      <h6 style=\"margin: 0px;\"><b style=\"color: #fff;\">Konfirmasi Transfer Bank</b></h6>\n    </div>\n    <br>\n  <form #signupForm=\"ngForm\" novalidate>\n    <ion-list lines=\"none\" style=\"border-radius: 20px;\">\n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">ID Order</ion-label>\n          <ion-input [(ngModel)]=\"signup.id_order\" name=\"id_order\" type=\"text\" #id_order=\"ngModel\" readonly required>\n          </ion-input>\n        </ion-item> \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Nama Pemilik Rekening</ion-label>\n          <ion-input [(ngModel)]=\"signup.nama_pemilik\" name=\"nama_pemilik\" type=\"text\" #nama_pemilik=\"ngModel\" required>\n          </ion-input>\n        </ion-item>  \n        <ion-text color=\"danger\">\n          <p [hidden]=\"nama_pemilik.valid || submitted == false\" class=\"ion-padding-start\">\n            Nama Pemilik Rekening tidak boleh kosong\n          </p>\n        </ion-text>                       \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Dari Bank</ion-label>\n          <ion-select [(ngModel)]=\"signup.dari_bank\" name=\"dari_bank\" type=\"text\" #dari_bank=\"ngModel\" required>\n              <ion-select-option value=\"L\">Bank Central Asia</ion-select-option>\n              <ion-select-option value=\"P\">Bank Lainnya</ion-select-option>\n          </ion-select>\n        </ion-item>\n        <ion-text color=\"danger\">\n          <p [hidden]=\"dari_bank.valid || submitted == false\" class=\"ion-padding-start\">\n            Dari Bank tidak boleh kosong\n          </p>\n        </ion-text>         \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Ke Bank</ion-label>\n          <ion-input [(ngModel)]=\"signup.ke_bank\" name=\"ke_bank\" type=\"text\" #ke_bank=\"ngModel\" readonly required>\n          </ion-input>\n        </ion-item>         \n        <ion-text color=\"danger\">\n          <p [hidden]=\"ke_bank.valid || submitted == false\" class=\"ion-padding-start\">\n            Ke Bank tidak boleh kosong\n          </p>\n        </ion-text>         \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Jumlah Dana</ion-label>\n          <ion-input [(ngModel)]=\"signup.jumlah_dana\" name=\"jumlah_dana\" type=\"number\" #jumlah_dana=\"ngModel\" required>\n          </ion-input>\n        </ion-item>  \n        <ion-text color=\"danger\">\n          <p [hidden]=\"jumlah_dana.valid || submitted == false\" class=\"ion-padding-start\">\n            Jumlah Dana tidak boleh kosong\n          </p>\n        </ion-text>  \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Tanggal Pembayaran</ion-label>\n          <!-- <ion-input [(ngModel)]=\"signup.tanggal_pembayaran\" name=\"tanggal_pembayaran\" type=\"date\" #tanggal_pembayaran=\"ngModel\" required>\n          </ion-input> -->\n          <ion-datetime displayFormat=\"DD/MM/YYYY\" placeholder=\"Pilih Tanggal\" [(ngModel)]=\"signup.tanggal_pembayaran\" name=\"tanggal_pembayaran\"\n          #tanggal_pembayaran=\"ngModel\" required\n          cancelText=\"Batal\" doneText=\"Pilih\"></ion-datetime>\n        </ion-item>  \n        <ion-text color=\"danger\">\n          <p [hidden]=\"tanggal_pembayaran.valid || submitted == false\" class=\"ion-padding-start\">\n            Tanggal Pembayaran tidak boleh kosong\n          </p>\n        </ion-text>  \n        <ion-item>\n          <ion-label position=\"stacked\" color=\"primary\">Bukti Foto</ion-label>\n          <ion-input [(ngModel)]=\"signup.bukti\" name=\"bukti\" type=\"hidden\" #bukti=\"ngModel\" required></ion-input>\n        </ion-item> \n\n        <ion-text color=\"danger\">\n          <p [hidden]=\"tanggal_pembayaran.valid || submitted == false\" class=\"ion-padding-start\">\n            Bukti Foto tidak boleh kosong\n          </p>\n        </ion-text>  \n        <div style=\"width: 100%;text-align: center;\" (click)=\"upload_bukti()\">\n          <div style=\"width: 80%;border:2px dashed#c4c4c4;margin:0 auto;border-radius: 20px;\">\n            <img class=\"product-image\" style=\"height: 120px;\" src=\"{{signup.bukti}}\" onerror=\"this.src = '/assets/img/no_image.png'\">\n          </div>         \n        </div>                                  \n    </ion-list>\n    <!-- <ion-grid>\n      <ion-row>\n        <ion-col>\n          <ion-button expand=\"full\" (click)=\"upload_bukti()\" color=\"light\" style=\"--border-radius:20px\">\n            Upload Bukti</ion-button>\n        </ion-col>\n      </ion-row>\n    </ion-grid> -->\n    <div>\n      <ion-button (click)=\"onSignup(signupForm)\" type=\"submit\" color=\"light\" expand=\"block\"\n      style=\"--border-radius:20px\"><b style=\"color: var(--ion-color-primary);\">Submit</b></ion-button>\n    </div>\n  </form>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -101,7 +101,7 @@ KonfirmasiPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".label-floating.sc-ion-label-md-h, .label-stacked.sc-ion-label-md-h {\n  color: #222;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAva29uZmlybWFzaS9rb25maXJtYXNpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2tvbmZpcm1hc2kva29uZmlybWFzaS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGFiZWwtZmxvYXRpbmcuc2MtaW9uLWxhYmVsLW1kLWgsIC5sYWJlbC1zdGFja2VkLnNjLWlvbi1sYWJlbC1tZC1oe1xyXG4gICAgY29sb3I6ICMyMjI7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".label-floating.sc-ion-label-md-h, .label-stacked.sc-ion-label-md-h {\n  color: #222;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAva29uZmlybWFzaS9rb25maXJtYXNpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJzcmMvYXBwL2tvbmZpcm1hc2kva29uZmlybWFzaS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGFiZWwtZmxvYXRpbmcuc2MtaW9uLWxhYmVsLW1kLWgsIC5sYWJlbC1zdGFja2VkLnNjLWlvbi1sYWJlbC1tZC1oe1xuICAgIGNvbG9yOiAjMjIyO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -259,6 +259,245 @@ KonfirmasiPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./konfirmasi.page.scss */ "./src/app/konfirmasi/konfirmasi.page.scss")).default]
     })
 ], KonfirmasiPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/providers/user-data.ts":
+/*!****************************************!*\
+  !*** ./src/app/providers/user-data.ts ***!
+  \****************************************/
+/*! exports provided: UserData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserData", function() { return UserData; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _providers_constant_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../providers/constant.service */ "./src/app/providers/constant.service.ts");
+
+
+
+// import { HTTP } from '@ionic-native/http/ngx';
+
+
+
+
+
+let UserData = class UserData {
+    constructor(storage, http, platform, router) {
+        this.storage = storage;
+        this.http = http;
+        this.platform = platform;
+        this.router = router;
+        this._favorites = [];
+        this.session = {};
+        this.HAS_LOGGED_IN = 'hasLoggedIn';
+        this.HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+        this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
+        this.platform.ready().then(() => {
+            this.isLoggedIn();
+        });
+    }
+    isAuthenticated() {
+        console.log(this.authState.value, 'value');
+        return this.authState.value;
+        // if(this.authState.value==false){
+        //   this.router.navigate(['login']);
+        // }else{
+        //   // this.router.navigate(['checkout']);
+        // }
+    }
+    hasFavorite(sessionName) {
+        return (this._favorites.indexOf(sessionName) > -1);
+    }
+    addFavorite(sessionName) {
+        this._favorites.push(sessionName);
+    }
+    removeFavorite(sessionName) {
+        const index = this._favorites.indexOf(sessionName);
+        if (index > -1) {
+            this._favorites.splice(index, 1);
+        }
+    }
+    login(username) {
+        console.log(username, 'USERNAME');
+        return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
+            this.setUsername(username);
+            // this.http.get(this.API_URL + 'login', {}, {})
+            // .then(data => {
+            //   console.log(data.status);
+            //   console.log(data.data); // data received by server
+            //   console.log(data.headers);
+            // })
+            // .catch(error => {
+            //   console.log(error.status);
+            //   console.log(error.error); // error message as string
+            //   console.log(error.headers);
+            // });      
+            return window.dispatchEvent(new CustomEvent('user:login'));
+        });
+    }
+    signup(username) {
+        return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
+            this.setUsername(username);
+            return window.dispatchEvent(new CustomEvent('user:signup'));
+        });
+    }
+    logout() {
+        return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
+            this.authState.next(false);
+            return this.storage.remove('username');
+        }).then(() => {
+            window.dispatchEvent(new CustomEvent('user:logout'));
+        });
+    }
+    setUsername(username) {
+        return this.storage.set('username', username);
+    }
+    set_referral(referral) {
+        console.log(referral, 'REFERRAL SET');
+        return this.storage.set('referral', referral);
+    }
+    get_referral() {
+        return this.storage.get('referral').then((value) => {
+            console.log(value, 'REFERRAL SET');
+            return value;
+        });
+    }
+    getUsername() {
+        return this.storage.get('username').then((value) => {
+            return value;
+        });
+    }
+    isLoggedIn() {
+        return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
+            this.authState.next(true);
+            return value === true;
+        });
+    }
+    checkHasSeenTutorial() {
+        return this.storage.get(this.HAS_SEEN_TUTORIAL).then((value) => {
+            return value;
+        });
+    }
+    // CUSTOMER LOYALTY
+    set_photo_profile(photo_profile) {
+        return this.getUsername().then(hsl => {
+            this.session = hsl;
+            this.session.photo = photo_profile;
+            this.setUsername(this.session);
+        });
+    }
+    get_photo_profile() {
+        return this.getUsername().then(hsl => {
+            this.session = hsl;
+            return this.session.photo;
+        });
+    }
+    get_data_provinsi() {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_provinsi', {})
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    get_data_kota(provinsi) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_kota', { provinsi: provinsi })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    get_data_kecamatan(kota) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_data_kecamatan', { kota: kota })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    short_url(url) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_short_url', { url: url })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    submit_pendaftaran(nama_pel, email_pel, pass_pel, kon_pass, no_telp_pel, provinsi, kota, kecamatan, alamat_pel, jk_pel, referral) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_submit_pendaftaran', {
+                nama_pel: nama_pel,
+                email_pel: email_pel,
+                pass_pel: pass_pel,
+                kon_pass: kon_pass,
+                no_telp_pel: no_telp_pel,
+                provinsi: provinsi,
+                kota: kota,
+                kecamatan: kecamatan,
+                alamat_pel: alamat_pel,
+                jk_pel: jk_pel,
+                id_ref: referral
+            })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+    update_profile(nama_pel, email_pel, pass_pel, kon_pass, no_telp_pel, provinsi, kota, kecamatan, alamat_pel, jk_pel, id_pel, info_lain_pel, nama_bank, rek, an) {
+        var promise = new Promise((resolve, reject) => {
+            this.http.post(_providers_constant_service__WEBPACK_IMPORTED_MODULE_7__["API_URL"] + 'api_update_pel', {
+                nama_pel: nama_pel,
+                email_pel: email_pel,
+                pass_pel: pass_pel,
+                kon_pass: kon_pass,
+                no_telp_pel: no_telp_pel,
+                provinsi: provinsi,
+                kota: kota,
+                kecamatan: kecamatan,
+                alamat_pel: alamat_pel,
+                jk_pel: jk_pel,
+                id_pel: id_pel, info_lain_pel: info_lain_pel, nama_bank: nama_bank, rek: rek, an: an
+            })
+                .subscribe(hasil => {
+                console.log('hasil', 'hasil');
+                resolve(hasil);
+            });
+        });
+        return promise;
+    }
+};
+UserData.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
+UserData = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], UserData);
 
 
 

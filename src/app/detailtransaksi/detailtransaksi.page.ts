@@ -94,8 +94,6 @@ export class DetailtransaksiPage implements OnInit {
         hasil = hsl;
         this.arr = hasil.invoice;
         this.nomor_rekening = hasil.rekening[0];
-        this.kontak.telp = hasil.kontak[0].isi_kontak;
-        this.kontak.email = hasil.kontak[1].isi_kontak;
         console.log(this.kontak, this.nomor_rekening, 'REKENING')
         this.data_order = hasil.invoice.order[0];
         this.detail_order = hasil.invoice.detail_order;

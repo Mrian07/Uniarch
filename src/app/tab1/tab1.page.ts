@@ -10,6 +10,7 @@ import { UserData } from '../providers/user-data';
 import { ConstantService } from '../providers/constant.service';
 import { ScrollDetail } from '@ionic/core';
 import { UtilService } from '../services/util/util.service';
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 
 @Component({
   selector: 'app-tab1',
@@ -61,7 +62,8 @@ export class Tab1Page {
     public constant: ConstantService,
     public actionSheetController: ActionSheetController,
     private util: UtilService,
-    public menu: MenuController
+    public menu: MenuController,
+    private fcm: FCM,
 
   ) 
 

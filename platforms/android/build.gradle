@@ -30,14 +30,14 @@ buildscript {
 }
 
 allprojects {
-    def hasRepositoriesGradle = file('repositories.gradle').exists()
-    if (hasRepositoriesGradle) {
-        apply from: 'repositories.gradle'
-    } else {
-        apply from: "${project.rootDir}/repositories.gradle"
-    }
-
+    apply from: 'repositories.gradle'
     repositories repos
+}
+
+ext {
+    defaultTargetSdkVersion = 30
+    compileSdkVersion = 30
+    buildToolsVersion = '30.0.3'
 }
 
 task clean(type: Delete) {

@@ -1,16 +1,24 @@
-import { Component, ViewChild } from '@angular/core';
-import {AlertController, IonRouterOutlet, NavController, Platform} from '@ionic/angular';
+
+import { Component, ViewChildren, OnInit, ViewEncapsulation, QueryList } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { MenuController, Platform, ToastController, NavController, LoadingController, AlertController, ActionSheetController, IonRouterOutlet } from '@ionic/angular';
+
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 import { Storage } from '@ionic/storage';
-import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import { UserData } from './providers/user-data';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NgxCommunicateService } from 'ngx-communicate';
+import { API_URL } from './providers/constant.service';
+import { ConstantService } from './providers/constant.service';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { NgZone } from '@angular/core';
-import { API_URL } from './providers/constant.service';
 import { HttpClient } from '@angular/common/http';
+import { NgZone } from '@angular/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 @Component({
@@ -20,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   private backButtonSubscription: Subscription;
-  @ViewChild(IonRouterOutlet, {static: false}) routerOutlet: IonRouterOutlet;
+  @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
   public selectedIndex = 0;
   public appPages = [
     {
@@ -57,24 +65,83 @@ export class AppComponent {
 
   valid: any;
   arr_sess: any = {};
-
+  loading: any;
+  loggedIn = false;
+  actionSheet: HTMLIonActionSheetElement;
   constructor(
+    private consta : ConstantService,
+    private menu: MenuController,
     private platform: Platform,
+    private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
+    private userData: UserData,
+    private toastCtrl: ToastController,
+    private camera: Camera,
+    private communicate: NgxCommunicateService,
+    public loadingCtrl: LoadingController,
     public alertController: AlertController,
-    private router: Router,
-    public navCtrl: NavController,
+    public actionSheetController: ActionSheetController,
     private fcm: FCM,
     private localNotifications: LocalNotifications,
-    public inAppBrowser: InAppBrowser,
-    public zone: NgZone,
     public http2: HttpClient,
+    public zone: NgZone,
+    public navCtrl: NavController,
+    public inAppBrowser: InAppBrowser,
   ) {
     this.initializeApp();
-  }
+    this.arr_sess.nama_pel = "";
+    this.communicate.on('login_success', (data: any) => {
+      //console.log(data, 'LOGIN SUCCESS');
+      this.userData.getUsername().then(hsl => {
+        //console.log(hsl, this.arr_sess, 'session user');
+        if (hsl) {
+          // alert('a')
+          this.arr_sess = hsl;
 
+          // this.name_user='Hi, '+this.arr_sess.nama_pel;
+          // console.log(this.name_user,'nama user 1')
+
+          // this.mystyle['background-image'] = "url('"+this.arr_sess.photo+"'";
+        } else {
+          // alert('b')
+          // this.name_user='';
+          this.arr_sess.nama_pel = "";
+
+        }
+      })
+    });
+    this.userData.getUsername().then(hsl => {
+      if (hsl) {
+        // alert('a')
+        this.arr_sess = hsl;
+
+        // this.name_user='Hi, '+this.arr_sess.nama_pel;
+        // console.log(this.name_user,'nama user 1')
+
+        // this.mystyle['background-image'] = "url('"+this.arr_sess.photo+"'";
+      } else {
+        // alert('b')
+        // this.name_user='';
+        this.arr_sess.nama_pel = "";
+
+      }
+    })
+  }
+  ionViewWillEnter() {
+    this.userData.getUsername().then(hsl => {
+      if (hsl == null) {
+        this.router.navigateByUrl('login')
+      } else {
+
+      }
+    });
+
+  }
+  ionViewDidEnter() {
+
+  }
   ngAfterViewInit(): void {
     this.backButtonSubscription = this.platform.backButton.subscribe(() => {
       if (this.router.url === '/tabs/tab1') {
@@ -84,9 +151,44 @@ export class AppComponent {
       }
     });
   }
+  async keluar_aplikasi() {
+    this.actionSheet = await this.actionSheetController.create({
+      header: 'Apakah anda yakin ingin keluar aplikasi ? ',
+      buttons: [
+        {
+          text: 'Ya',
+          handler: () => {
+            navigator['app'].exitApp();
+          }
+        },
+        {
+          text: 'Tidak',
+          role: 'cancel',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    await this.actionSheet.present();
+  }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    let subs: any;
+      this.platform.ready().then(() => {
+        // this.platform.backButton.subscribe(hsl=>{
+        this.platform.backButton.subscribeWithPriority(0, () => {
+          this.routerOutlets.forEach((outlet: IonRouterOutlet) => {
+            if (this.router.url == '/tabs/tab1') {
+              this.keluar_aplikasi();
+            } else if (this.router.url == '/login') {
+              this.keluar_aplikasi();
+            } else
+              if (outlet && outlet.canGoBack()) {
+                outlet.pop();
+              }
+          })
+        })
       this.statusBar.backgroundColorByHexString('#5ab1cb');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -101,11 +203,11 @@ export class AppComponent {
             console.log("Received in background");
             if(data.type == "PRODUCT") {
               th.zone.run(() => {
-                th.router.navigateByUrl('/product-detail/' + data.id);
+                th.router.navigateByUrl('/detailproduk/' + data.id);
               });
             }else if(data.type == "BLOG") {
               th.zone.run(() => {
-                th.router.navigateByUrl('/blog');
+                th.router.navigateByUrl('/detailblog');
               });
             }else if(data.type == "LINK") {
               th.inAppBrowser.create(
@@ -133,11 +235,11 @@ export class AppComponent {
                 console.log(notification.data);
                 if(notification.data.type == "PRODUCT") {
                   th.zone.run(() => {
-                    th.router.navigateByUrl('/product-detail/' + notification.data.id);
+                    th.router.navigateByUrl('/detailproduk/' + notification.data.id);
                   });
                 }else if(notification.data.type == "BLOG") {
                   th.zone.run(() => {
-                    th.router.navigateByUrl('/blog');
+                    th.router.navigateByUrl('/detailblog');
                   });
                 }else if(notification.data.type == "LINK") {
                   th.inAppBrowser.create(
@@ -156,8 +258,6 @@ export class AppComponent {
 
         th.fcm.onTokenRefresh({once:false}).subscribe(token => {
           console.log(token)
-          // Register your new token in your back-end if you want
-          // backend.registerToken(token);
         });
 
         th.fcm.getInitialPushPayload().then(data => {
@@ -168,7 +268,7 @@ export class AppComponent {
               });
             }else if(data.type == "BLOG") {
               th.zone.run(() => {
-                th.router.navigateByUrl('/blog');
+                th.router.navigateByUrl('/detailblog');
               });
             }else if(data.type == "LINK") {
               th.inAppBrowser.create(
@@ -187,9 +287,49 @@ export class AppComponent {
     });
   }
 
+
+
+  checkLoginStatus() {
+    return this.userData.isLoggedIn().then(loggedIn => {
+      return this.updateLoggedInStatus(loggedIn);
+    });
+  }
+
+  updateLoggedInStatus(loggedIn: boolean) {
+    setTimeout(() => {
+      if (loggedIn) {
+
+        this.getToken();
+        this.subscribeToTopic();
+      }
+      this.loggedIn = loggedIn;
+    }, 300);
+  }
+
+  listenForLoginEvents() {
+    window.addEventListener('user:login', () => {
+      this.updateLoggedInStatus(true);
+    });
+
+    window.addEventListener('user:signup', () => {
+      this.updateLoggedInStatus(true);
+    });
+
+    window.addEventListener('user:logout', () => {
+      this.updateLoggedInStatus(false);
+      this.arr_sess = {};
+    });
+  }
+  logout() {
+    this.userData.logout().then(() => {
+      this.unsubscribeFromTopic();
+      return this.router.navigateByUrl('/login');
+    });
+  }
   subscribeToTopic() {
     this.fcm.subscribeToTopic('all');
   }
+  
   getToken() {
     this.fcm.getToken().then(token => {
       console.log(token)

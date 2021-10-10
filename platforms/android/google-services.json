@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:100489610481:android:64bc258d612b65f7b45550",
+        "mobilesdk_app_id": "1:100489610481:android:2be40f770b1ab95ab45550",
         "android_client_info": {
-          "package_name": "com.Uniarch.app"
+          "package_name": "com.uniarch.app"
         }
       },
       "oauth_client": [

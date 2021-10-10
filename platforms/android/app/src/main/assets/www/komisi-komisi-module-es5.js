@@ -343,7 +343,7 @@
           key: "sharewa",
           value: function sharewa() {
             var url;
-            url = 'https://cctvgrosir.page.link/?link=https://msidahua.com?referral_' + this.data_user.id_pel + '&apn=com.cctvgrosir.app';
+            url = 'https://uniarch.page.link/?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
             this.socialSharing.shareViaWhatsApp('', '', url).then(function (res) {
               // Success
               console.log(res, 'REST');
@@ -358,7 +358,7 @@
             var _this4 = this;
 
             var url;
-            url = 'https://cctvgrosir.page.link/?link=https://msidahua.com?referral_' + this.data_user.id_pel + '&apn=com.cctvgrosir.app';
+            url = 'https://uniarch.page.link/?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
             this.clipboard.copy(url).then(function (hsl) {
               _this4.toast.show('Link berhasil di copy', '5000', 'center').subscribe(function (toast) {
                 console.log(toast);

@@ -29,21 +29,15 @@ buildscript {
 }
 
 allprojects {
-    def hasRepositoriesGradle = file('repositories.gradle').exists()
-    if (hasRepositoriesGradle) {
-        apply from: 'repositories.gradle'
-    } else {
-        apply from: "${project.rootDir}/repositories.gradle"
-    }
-
+    apply from: 'repositories.gradle'
     repositories repos
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion cordovaConfig.SDK_VERSION
-    buildToolsVersion cordovaConfig.BUILD_TOOLS_VERSION
+    compileSdkVersion 30
+    buildToolsVersion buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -53,6 +47,7 @@ android {
     // For the Android Cordova Lib, we allow changing the minSdkVersion, but it is at the users own risk
     defaultConfig {
         minSdkVersion cordovaConfig.MIN_SDK_VERSION
+        targetSdkVersion defaultTargetSdkVersion
     }
 
     sourceSets {

@@ -46,7 +46,7 @@ buildscript {
 
         if(cordovaConfig.IS_GRADLE_PLUGIN_GOOGLE_SERVICES_ENABLED) {
             // Checks if the kotlin version format is valid.
-            if(!cdvHelpers.isVersionValid(cordovaConfig.GRADLE_PLUGIN_GOOGLE_SERVICES_VERSION)) {
+            if(!cdvHelpers.isVersionValid(gradlePluginGoogleServicesVersion)) {
                 throw new GradleException("The defined Google Services plugin version (${cordovaConfig.GRADLE_PLUGIN_GOOGLE_SERVICES_VERSION}) does not appear to be a valid version.")
             }
 
@@ -60,13 +60,7 @@ buildscript {
 
 // Allow plugins to declare Maven dependencies via build-extras.gradle.
 allprojects {
-    def hasRepositoriesGradle = file('repositories.gradle').exists()
-    if (hasRepositoriesGradle) {
-        apply from: 'repositories.gradle'
-    } else {
-        apply from: "${project.rootDir}/repositories.gradle"
-    }
-
+    apply from: 'repositories.gradle'
     repositories repos
 }
 
@@ -109,8 +103,8 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-fcm-with-dependecy-updated/app-FCMPlugin.gradle"
 apply from: "../cordova-plugin-badge/app-badge.gradle"
+apply from: "../cordova-plugin-fcm-with-dependecy-updated/app-FCMPlugin.gradle"
 apply from: "../cordova-plugin-local-notification/app-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
@@ -190,7 +184,7 @@ android {
         if (cordovaConfig.MAX_SDK_VERSION != null) {
             maxSdkVersion cordovaConfig.MAX_SDK_VERSION
         }
-        targetSdkVersion cordovaConfig.SDK_VERSION
+        targetSdkVersion 30
         compileSdkVersion cordovaConfig.SDK_VERSION
     }
 
@@ -198,7 +192,7 @@ android {
       abortOnError false
     }
 
-    buildToolsVersion cordovaConfig.BUILD_TOOLS_VERSION
+    buildToolsVersion '30.0.3'
 
     // This code exists for Crosswalk and other Native APIs.
     // By default, we multiply the existing version code in the
@@ -278,6 +272,7 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    compileSdkVersion 30
 }
 
 /*
@@ -299,6 +294,7 @@ dependencies {
     implementation(project(path: ":CordovaLib"))
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     // SUB-PROJECT DEPENDENCIES END
 }

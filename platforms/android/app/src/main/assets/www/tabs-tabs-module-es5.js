@@ -111,7 +111,7 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() | tab4-tab4-module */
-            [__webpack_require__.e("default~checkout-checkout-module~detailproduk-detailproduk-module~detailtransaksi-detailtransaksi-mo~3f784061"), __webpack_require__.e("common"), __webpack_require__.e("tab4-tab4-module")]).then(__webpack_require__.bind(null,
+            [__webpack_require__.e("common"), __webpack_require__.e("tab4-tab4-module")]).then(__webpack_require__.bind(null,
             /*! ../tab4/tab4.module */
             "./src/app/tab4/tab4.module.ts")).then(function (m) {
               return m.Tab4PageModule;
@@ -122,7 +122,7 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() | tab5-tab5-module */
-            [__webpack_require__.e("default~checkout-checkout-module~detailproduk-detailproduk-module~detailtransaksi-detailtransaksi-mo~3f784061"), __webpack_require__.e("common"), __webpack_require__.e("tab5-tab5-module")]).then(__webpack_require__.bind(null,
+            [__webpack_require__.e("common"), __webpack_require__.e("tab5-tab5-module")]).then(__webpack_require__.bind(null,
             /*! ../tab5/tab5.module */
             "./src/app/tab5/tab5.module.ts")).then(function (m) {
               return m.Tab5PageModule;
@@ -133,7 +133,7 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() | detailproduk-detailproduk-module */
-            [__webpack_require__.e("default~checkout-checkout-module~detailproduk-detailproduk-module~detailtransaksi-detailtransaksi-mo~3f784061"), __webpack_require__.e("common"), __webpack_require__.e("detailproduk-detailproduk-module")]).then(__webpack_require__.bind(null,
+            [__webpack_require__.e("common"), __webpack_require__.e("detailproduk-detailproduk-module")]).then(__webpack_require__.bind(null,
             /*! ../detailproduk/detailproduk.module */
             "./src/app/detailproduk/detailproduk.module.ts")).then(function (m) {
               return m.DetailprodukPageModule;

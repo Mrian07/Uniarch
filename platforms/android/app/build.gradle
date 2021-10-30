@@ -176,8 +176,16 @@ task cdvPrintProps {
 }
 
 android {
+    signingConfigs {
+        prod {
+            storeFile file('/home/mrian07/repo/Uniarch/my-release-key.jks')
+            storePassword '123456'
+            keyAlias 'Key0'
+            keyPassword '123456'
+        }
+    }
     defaultConfig {
-        versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
+        versionCode 20001
         applicationId privateHelpers.extractStringFromManifest("package")
 
         minSdkVersion cordovaConfig.MIN_SDK_VERSION
@@ -186,6 +194,8 @@ android {
         }
         targetSdkVersion 30
         compileSdkVersion cordovaConfig.SDK_VERSION
+        versionName '1.0.2'
+        signingConfig signingConfigs.prod
     }
 
     lintOptions {

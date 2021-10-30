@@ -36,8 +36,16 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    signingConfigs {
+        prod {
+            storeFile file('/home/mrian07/repo/Uniarch/my-release-key.jks')
+            storePassword '123456'
+            keyAlias 'Key0'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 30
-    buildToolsVersion buildToolsVersion
+    buildToolsVersion '30.0.3'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,6 +56,9 @@ android {
     defaultConfig {
         minSdkVersion cordovaConfig.MIN_SDK_VERSION
         targetSdkVersion defaultTargetSdkVersion
+        versionCode 20001
+        versionName '1.0.2'
+        signingConfig signingConfigs.prod
     }
 
     sourceSets {

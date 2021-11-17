@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Toast } from '@ionic-native/toast/ngx';
-import { API_URL_SLIDER } from '../providers/constant.service';
+import { API_URL } from '../providers/constant.service';
 import { DataCartService } from '../services/data-cart.service';
 
 @Component({
@@ -66,7 +66,7 @@ export class KomisiPage implements OnInit {
     });
   }
   get_data_referral() {
-    this.http.post(API_URL_SLIDER + 'api_get_data_referral', { id_pel: this.data_user.id_pel })
+    this.http.post(API_URL + 'api_get_data_referral', { id_pel: this.data_user.id_pel })
       .subscribe((hsl) => {
         let hasil: any = {};
         hasil = hsl;

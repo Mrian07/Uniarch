@@ -153,10 +153,14 @@ export class Tab3Page {
     }
   }
 
-  add_plus(index) {
-    this.list_detail[index].qty_pro++;
-    this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
-    this.calculate_total();
+async pilih_varian(index) {
+
+  console.log(this.list_detail[index].qty_pro);
+  console.log(this.list_detail[index].harga_pro_real);
+
+  this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
+  this.calculate_total();
+
   }
 
   async hapus_keranjang(){
@@ -225,7 +229,11 @@ export class Tab3Page {
     ;
   }
 
-  
+  add_plus(index) {
+    this.list_detail[index].qty_pro++;
+    this.list_detail[index].sub_total_real = this.list_detail[index].qty_pro * this.list_detail[index].harga_pro_real;
+    this.calculate_total();
+  }
 
   ke_pengiriman(){
     let count : any = 0;

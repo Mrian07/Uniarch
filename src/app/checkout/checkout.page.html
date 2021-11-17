@@ -231,6 +231,7 @@
         </ion-item>
         <ion-item>
           <ion-input type="text" [(ngModel)]="kodekupon" placeholder="Masukkan Kode Kupon"></ion-input>
+          <ion-button (click)="getKupon()" color="secondary">Gunakan Kupon</ion-button>
         </ion-item>
         <ion-item>
           <ion-col>Total</ion-col>
@@ -259,6 +260,7 @@
 
   <ion-row style="padding:0px 10px;">
     <ion-col size="12">
+      
       <ion-button size="small" (click)="save_pengiriman()"
         style="color: #fff;height: 37px;--background: var(--ion-color-primary);width: 100%;--border-radius: 10px;">
         <b style="color: #fff;">Bayar</b>

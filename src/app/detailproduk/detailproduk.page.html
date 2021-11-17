@@ -34,19 +34,29 @@
         <ion-col size="12" style="height: fit-content;">
           <h4 style="margin: 0px;font-weight: 500;">{{nama_pro}}</h4>
         </ion-col>
+        
         <ion-col size="12" style="height: fit-content;" *ngIf="akses != null">
-
+        
           <h4 *ngIf="data_user.status_pel == 1" style="margin: 0px;color: var(--ion-color-primary);"> 
-            {{harga_jual_pro2 - (harga_jual_pro2 * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+            <!-- {{harga_jual_pro2 - (harga_jual_pro2 * disc_pro / 100) | currency : 'IDR' : 'Rp.' }} -->
+            {{harga_jual_pro2 | currency : 'IDR' : 'Rp.' }}
           </h4>
           <h4 *ngIf="data_user.status_pel == 2" style="margin: 0px;color: var(--ion-color-primary);">
-            {{harga_jual_reseller - (harga_jual_reseller * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+            <!-- {{harga_jual_reseller - (harga_jual_reseller * disc_pro / 100) | currency : 'IDR' : 'Rp.' }} -->
+            {{harga_jual_reseller | currency : 'IDR' : 'Rp.' }}
           </h4>
           <h4 *ngIf="data_user.status_pel == 0" style="margin: 0px;color: var(--ion-color-primary);">
             {{harga_user - (harga_user * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
           </h4>
 
         </ion-col>
+
+        <ion-col size="12" style="height: fit-content;" *ngIf="akses == null">
+          <h4 style="margin: 0px;color: var(--ion-color-primary);">
+            {{harga_user - (harga_user * disc_pro / 100) | currency : 'IDR' : 'Rp.' }}
+          </h4>
+        </ion-col>
+
         <!-- <ion-col size="12" style="height: fit-content;">
           <p style="margin: 0px;">{{berat_pro}}gram /pcs</p>
         </ion-col> -->
@@ -99,7 +109,6 @@
           <h2>Deskripsi</h2>
           <p [innerHTML]="desc_pro"></p>
           <br><br><br><br><br><br><br><br><br><br>
-          
         </div>
       </ion-item>
       <!-- <ion-item [ngClass]="faqExpand3 ? 'active' : '' " (click)="faqExpandToggle3()">

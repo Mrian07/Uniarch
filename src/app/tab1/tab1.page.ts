@@ -10,7 +10,6 @@ import { UserData } from '../providers/user-data';
 import { ConstantService } from '../providers/constant.service';
 import { ScrollDetail } from '@ionic/core';
 import { UtilService } from '../services/util/util.service';
-import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 
 @Component({
   selector: 'app-tab1',
@@ -62,8 +61,7 @@ export class Tab1Page {
     public constant: ConstantService,
     public actionSheetController: ActionSheetController,
     private util: UtilService,
-    public menu: MenuController,
-    private fcm: FCM,
+    public menu: MenuController
 
   ) 
 
@@ -309,10 +307,13 @@ export class Tab1Page {
   }
 
   async insert_cart(id_pro, i: number){
+
     this.loading = await this.loadingctrl.create({
       message: 'Please wait...'
     });
+
     await this.loading.present();
+    
     this.servcart.save_keranjang(id_pro, this.data_user.id_pel, 0, 1).then( hasil => {
       this.loading.dismiss();
       let hasil2 : any = {};

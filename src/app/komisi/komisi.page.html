@@ -85,7 +85,7 @@
           </ion-row>
           <ion-row>
             <ion-col  size="4">Komisi</ion-col>
-            <ion-col>{{item.komisi | currency : 'IDR' : 'Rp. ' }}</ion-col>
+            <ion-col> {{item.komisi==null ? 0 : item.komisi | currency : 'IDR' : 'Rp. '}}</ion-col>
           </ion-row>
         </div>
       </ion-card-content>

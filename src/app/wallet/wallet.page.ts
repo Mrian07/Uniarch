@@ -19,7 +19,7 @@ export class WalletPage implements OnInit {
   data_user : any;
   loading : any;
   total_keranjang: any;
-  data_wallet : any = {};
+  data_wallet : any = [];
   total_widthdraw : any;
   constructor(
     public http: HttpClient,

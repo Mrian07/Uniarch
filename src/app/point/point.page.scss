@@ -27,3 +27,12 @@
     font-weight:500;
     color:var(--ion-color-primary);
 }
+ion-segment-button{
+    --indicator-box-shadow: transparent!important;
+    --background:white;
+    --color:#2d2e87;
+    --background-checked: #58B1CA !important;
+    --color-checked: white;
+    --indicator-color : transparent!important; /* this solution */
+
+    }

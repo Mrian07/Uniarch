@@ -194,9 +194,9 @@ export class DataCartService {
 
   getRiwayat(kode_pel){
     var promise = new Promise((resolve, reject) => {
-      this.http.post(API_URL + 'get_riwayat_reward', {
-        kode_pel:kode_pel
-      })
+      var formData: any = new FormData();
+      formData.append("kode_pel", kode_pel); 
+      this.http.post(API_URL + 'get_riwayat_reward', formData)
       .subscribe(hasil => {
         console.log('hadiah', 'hasil')
         resolve(hasil);
@@ -207,9 +207,9 @@ export class DataCartService {
 
   getPoin(kode_pel){
     var promise = new Promise((resolve, reject) => {
-      this.http.post(API_URL + 'get_poin', {
-        kode_pel:kode_pel
-      })
+      var formData: any = new FormData();
+      formData.append("kode_pel", kode_pel);
+      this.http.post(API_URL + 'get_poin', formData)
       .subscribe(hasil => {
         console.log('hadiah', 'hasil')
         resolve(hasil);

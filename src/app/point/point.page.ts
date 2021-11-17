@@ -58,7 +58,6 @@ export class PointPage implements OnInit {
   }
 
   riwayat: any;
-
   async getRiwayat() {
     let kode_pel = this.data_user.id_pel;
     this.servcart.getRiwayat(kode_pel).then(data => {
@@ -100,18 +99,19 @@ export class PointPage implements OnInit {
       message: 'Proses Penukaran...'
     });
     this.loading2.present();
-    /*if(this.poin<Math.abs(poin)){
+    if(this.poin<Math.abs(poin)){
       this.consta.show_alert('Notif', '','Poin belum mencukupi.');
       this.loading2.dismiss();
-    }else{*/
+    }else{
     this.servcart.insertPenukaran(kode, this.data_user.id_pel).then(data => {
       let set: any = {};
       set = data;
       this.loading2.dismiss();
       this.ionViewWillEnter();
       this.consta.show_alert('Notif', '', set.title);
+      this.getPoin();
     })
-    //}
+    }
   }
 
   get_total_keranjang() {

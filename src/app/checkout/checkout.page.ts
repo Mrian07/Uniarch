@@ -394,10 +394,10 @@ export class CheckoutPage implements OnInit {
       }    
       
 
-      if(this.kurir_terpilih===undefined||this.kurir_terpilih==''){
+      /*if(this.kurir_terpilih===''||this.kurir_terpilih==null){
         this.consta.show_alert('Error', '', 'Silahkan pilih Kurir dulu');
         return false;
-      }
+      }*/
 
       if(this.length_paket>0&&this.paket_terpilih===undefined){
         this.consta.show_alert('Error', '', 'Silahkan pilih Paket dulu');

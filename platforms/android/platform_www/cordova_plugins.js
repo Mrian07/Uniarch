@@ -311,6 +311,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-firebase-analytics.FirebaseAnalytics",
+      "file": "plugins/cordova-plugin-firebase-analytics/www/FirebaseAnalytics.js",
+      "pluginId": "cordova-plugin-firebase-analytics",
+      "merges": [
+        "cordova.plugins.firebase.analytics"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-dynamiclinks.FirebaseDynamicLinks",
+      "file": "plugins/cordova-plugin-firebase-dynamiclinks/www/FirebaseDynamicLinks.js",
+      "pluginId": "cordova-plugin-firebase-dynamiclinks",
+      "merges": [
+        "cordova.plugins.firebase.dynamiclinks"
+      ]
+    },
+    {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
       "pluginId": "cordova-plugin-inappbrowser",
@@ -416,6 +432,9 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-camera": "5.0.1",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-fcm-with-dependecy-updated": "7.8.0",
+    "cordova-support-android-plugin": "1.0.2",
+    "cordova-plugin-firebase-analytics": "6.1.0",
+    "cordova-plugin-firebase-dynamiclinks": "6.1.1",
     "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.2.1",

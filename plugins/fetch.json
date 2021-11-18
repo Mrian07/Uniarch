@@ -162,5 +162,33 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-firebase-dynamiclinks": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebase-dynamiclinks@^6.1.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_DOMAIN_NAME": "uniarch.page.link/76UZ",
+      "APP_DOMAIN_PATH": "/",
+      "ANDROID_FIREBASE_DYNAMICLINKS_VERSION": "20.1.+"
+    }
+  },
+  "cordova-plugin-firebase-analytics": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebase-analytics@~6.1.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-support-android-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-support-android-plugin@~1.0.0"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

@@ -32,6 +32,12 @@
       "ANDROID_GRADLE_TOOLS_VERSION": "4.1.0",
       "PACKAGE_NAME": "com.uniarch.app"
     },
+    "cordova-plugin-firebase-dynamiclinks": {
+      "APP_DOMAIN_NAME": "uniarch.page.link/76UZ",
+      "APP_DOMAIN_PATH": "/",
+      "ANDROID_FIREBASE_DYNAMICLINKS_VERSION": "20.1.+",
+      "PACKAGE_NAME": "com.uniarch.app"
+    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.uniarch.app"
     },
@@ -66,6 +72,15 @@
       "PACKAGE_NAME": "com.uniarch.app"
     },
     "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.uniarch.app"
+    },
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "com.uniarch.app"
+    },
+    "cordova-plugin-firebase-analytics": {
+      "ANALYTICS_COLLECTION_ENABLED": "true",
+      "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+      "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+",
       "PACKAGE_NAME": "com.uniarch.app"
     },
     "es6-promise-plugin": {

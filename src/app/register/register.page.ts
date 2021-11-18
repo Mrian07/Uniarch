@@ -24,7 +24,7 @@ export class RegisterPage {
     jk_pel : '', 
     confirm_password : '',
     no_telp : '',
-    username : '',   
+    username : '',  
   };
   referral : any;
   submitted = false;
@@ -52,7 +52,8 @@ export class RegisterPage {
       jk_pel : '', 
       confirm_password : '',
       no_telp : '',
-      username : '',   
+      username : '',  
+      //referral: '', 
     };       
     this.error_konfirmasi = false;
     this.get_data_provinsi();
@@ -121,6 +122,9 @@ export class RegisterPage {
       
       this.loading.present();
       this.userData.get_referral().then( val => {
+        console.log(val, 'VAL REFERRAL')
+        this.referral = val;
+        this.consta.show_alert('Referral', 'test', val);
         this.userData.submit_pendaftaran(nama_pel, email_pel, pass_pel, kon_pass, no_telp_pel, provinsi, kota, kecamatan, alamat_pel, jk_pel, val)
         .then( hsl => {
           let hasil : any = {};
@@ -139,9 +143,6 @@ export class RegisterPage {
           }
         })        
       });
-      // this.userData.signup(this.signup.username);
-
-      // this.router.navigateByUrl('/app/tabs/schedule');
     }
   }
 

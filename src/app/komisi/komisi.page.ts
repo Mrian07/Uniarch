@@ -76,7 +76,7 @@ export class KomisiPage implements OnInit {
   }
   sharewa() {
     let url: string;
-    url = 'https://uniarch.page.link/?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
+    url = 'https://uniarch.page.link?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
     this.socialSharing.shareViaWhatsApp('', '', url).then((res) => {
       // Success
       console.log(res, 'REST')
@@ -85,9 +85,11 @@ export class KomisiPage implements OnInit {
       console.log(e, 'ERROR')
     });
   }
+  
+
   copylink() {
     let url: string;
-    url = 'https://uniarch.page.link/?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
+    url = 'https://uniarch.page.link?link=https://shop.uniarch.id?referral_' + this.data_user.id_pel + '&apn=com.uniarch.app';
     this.clipboard.copy(url).then(hsl => {
       this.toast.show('Link berhasil di copy', '5000', 'center').subscribe(
         toast => {

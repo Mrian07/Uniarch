@@ -19,6 +19,7 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Toast } from '@ionic-native/toast/ngx';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx'
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx'
     NgxCommunicateModule.forRoot(),
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, HTTP, Camera, SocialSharing, Clipboard, Toast, FCM, LocalNotifications],
+  providers: [InAppBrowser, SplashScreen, StatusBar, HTTP, Camera, SocialSharing, Clipboard, Toast, FCM, LocalNotifications, FirebaseDynamicLinks],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

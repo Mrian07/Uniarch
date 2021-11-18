@@ -175,7 +175,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".label-floating.sc-ion-label-md-h, .label-stacked.sc-ion-label-md-h {\n  color: #222;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAva29uZmlybWFzaS9rb25maXJtYXNpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2tvbmZpcm1hc2kva29uZmlybWFzaS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGFiZWwtZmxvYXRpbmcuc2MtaW9uLWxhYmVsLW1kLWgsIC5sYWJlbC1zdGFja2VkLnNjLWlvbi1sYWJlbC1tZC1oe1xuICAgIGNvbG9yOiAjMjIyO1xufSJdfQ== */";
+      __webpack_exports__["default"] = ".label-floating.sc-ion-label-md-h, .label-stacked.sc-ion-label-md-h {\n  color: #222;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAva29uZmlybWFzaS9rb25maXJtYXNpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJzcmMvYXBwL2tvbmZpcm1hc2kva29uZmlybWFzaS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGFiZWwtZmxvYXRpbmcuc2MtaW9uLWxhYmVsLW1kLWgsIC5sYWJlbC1zdGFja2VkLnNjLWlvbi1sYWJlbC1tZC1oe1xuICAgIGNvbG9yOiAjMjIyO1xufSJdfQ== */";
       /***/
     },
 

@@ -20,6 +20,47 @@
 -->
 ## Release Notes for Cordova (Android)
 
+### 10.1.1 (Sep 13, 2021)
+
+**Fixes:**
+
+* [GH-1349](https://github.com/apache/cordova-android/pull/1349) fix(`PluginManager`): `AllowNavigation` default policy to handle scheme & hostname
+* [GH-1342](https://github.com/apache/cordova-android/pull/1342) fix(`AllowListPlugin`): Safely handle default allow navigation policy in allow request
+* [GH-1332](https://github.com/apache/cordova-android/pull/1332) fix(`PluginManager`): `AllowBridgeAccess` default policy to handle scheme & hostname
+
+### 10.1.0 (Aug 13, 2021)
+
+**Features:**
+
+* [GH-1213](https://github.com/apache/cordova-android/pull/1213) feat: unify `create` default values & stop project name transform
+* [GH-1306](https://github.com/apache/cordova-android/pull/1306) feat: bump `ANDROIDX_APP_COMPAT@1.3.1`
+* [GH-1303](https://github.com/apache/cordova-android/pull/1303) feat: bump `Google Services Gradle Plugin@4.3.8`
+* [GH-1302](https://github.com/apache/cordova-android/pull/1302) feat: bump `kotlin@1.5.21`
+* [GH-1298](https://github.com/apache/cordova-android/pull/1298) feat: support `http` w/ `content` `src` fix
+
+**Fixes:**
+
+* [GH-1214](https://github.com/apache/cordova-android/pull/1214) fix: display project name in Android Studio
+* [GH-1300](https://github.com/apache/cordova-android/pull/1300) fix: fall back to project root `repositories.gradle`
+
+**Docs:**
+
+* [GH-1308](https://github.com/apache/cordova-android/pull/1308) doc: update `README` about development & testing
+
+### 10.0.1 (Jul 27, 2021)
+
+**Fixes:**
+
+* [GH-1295](https://github.com/apache/cordova-android/pull/1295) fix: `maven-publish` setup
+* [GH-1293](https://github.com/apache/cordova-android/pull/1293) fix: `gradle` build tools config
+* [GH-1294](https://github.com/apache/cordova-android/pull/1294) fix: automatic latest build tools finding
+* [GH-1287](https://github.com/apache/cordova-android/pull/1287) fix: Google Services Gradle Plugin version check failure
+
+**Chores:**
+
+* [GH-1291](https://github.com/apache/cordova-android/pull/1291) chore: add missing release notes
+* [GH-1286](https://github.com/apache/cordova-android/pull/1286) chore: update `README` requirements
+
 ### 10.0.0 (Jul 17, 2021)
 
 **Breaking:**
@@ -311,6 +352,38 @@
 * [CB-13975](https://issues.apache.org/jira/browse/CB-13975) Fix to fire pause event when cdvStartInBackground=true
 * [CB-13830](https://issues.apache.org/jira/browse/CB-13830) Add handlers for plugins that use non-Java source files, such as Camera
 * [CB-13923](https://issues.apache.org/jira/browse/CB-13923) Fix -1 length for compressed files
+
+### 7.1.4 (Nov 22, 2018)
+
+* Update android-versions to `1.4.0`, with added support for Android Pie ([#573](https://github.com/apache/cordova-android/pull/573))
+* Output current package name if package name can't be validated ([#567](https://github.com/apache/cordova-android/pull/567))
+* Resolve issue with plugin `target-dir="*app*"` subdirs ([#572](https://github.com/apache/cordova-android/pull/572))
+
+### 7.1.3 (Nov 19, 2018)
+
+* [GH-495](https://github.com/apache/cordova-android/pull/495) Incorrect default sdk version issue fix
+* [GH-496](https://github.com/apache/cordova-android/pull/496) update comments in `build.gradle`
+* [GH-539](https://github.com/apache/cordova-android/pull/539) Fix dest overwrite, in case of of plugin `source-file` element with `target-dir` that does not need remapping
+* [GH-540](https://github.com/apache/cordova-android/issues/540) support plugin `source-file` element with any app `target-dir` value
+* [GH-547](https://github.com/apache/cordova-android/issues/547) Compatibility of old plugins with non-Java `source-file` entries (individual files)
+* [GH-551](https://github.com/apache/cordova-android/pull/551) add missing cast for cdvMinSdkVersion to `build.gradle`
+* [GH-552](https://github.com/apache/cordova-android/issues/552) check for `build-extras.gradle` in the parent app directory
+
+### 7.1.2 (Nov 08, 2018)
+* [CB-14127](https://issues.apache.org/jira/browse/CB-14127): Always put the Google repo above jcenter
+* [CB-14165](https://issues.apache.org/jira/browse/CB-14165): Emulator: handle "device still connecting" error (#457)
+* [CB-14125](https://issues.apache.org/jira/browse/CB-14125): Increase old plugin compatibility
+* [CB-13830](https://issues.apache.org/jira/browse/CB-13830): Add handlers for plugins that use non-Java source files, such as Camera
+* [CB-14038](https://issues.apache.org/jira/browse/CB-14038): fix false positive detecting project type
+
+### 7.1.1 (Jul 11, 2018)
+* Fix unsafe property access in run.js (#445)
+* Emit log event instead of logging directly (#452)
+* [CB-14101](https://issues.apache.org/jira/browse/CB-14101) Fix Java version check for Java >= 9 (#446)
+* [CB-14127](https://issues.apache.org/jira/browse/CB-14127) (android) Move google maven repo ahead of jcenter
+* [CB-13923](https://issues.apache.org/jira/browse/CB-13923) (android) fix -1 length for compressed files
+* [CB-14145](https://issues.apache.org/jira/browse/CB-14145) use cordova-common@2.2.5 and update other dependencies to resolve `npm audit` warnings
+* [CB-9366](https://issues.apache.org/jira/browse/CB-9366) log error.stack in cordova.js
 
 ### 7.1.0 (Feb 20, 2018)
 * [CB-13879](https://issues.apache.org/jira/browse/CB-13879) updated gradle tools dependency to 3.0.1 for project template

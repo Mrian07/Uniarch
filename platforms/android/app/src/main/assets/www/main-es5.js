@@ -460,7 +460,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "ion-item.selected {\n  --color: var(--ion-color-primary);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUNBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59Il19 */";
+      __webpack_exports__["default"] = "ion-item.selected {\n  --color: var(--ion-color-primary);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUNBQVE7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59Il19 */";
       /***/
     },
 
@@ -573,9 +573,15 @@
       var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! @ionic-native/in-app-browser/ngx */
       "./node_modules/@ionic-native/in-app-browser/__ivy_ngcc__/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_firebase_dynamic_links_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+      /*! @ionic-native/firebase-dynamic-links/ngx */
+      "./node_modules/@ionic-native/firebase-dynamic-links/__ivy_ngcc__/ngx/index.js");
 
       var AppComponent = /*#__PURE__*/function () {
-        function AppComponent(consta, menu, platform, router, splashScreen, statusBar, storage, userData, toastCtrl, camera, communicate, loadingCtrl, alertController, actionSheetController, fcm, localNotifications, http2, zone, navCtrl, inAppBrowser) {
+        function AppComponent(consta, menu, platform, router, splashScreen, statusBar, storage, userData, toastCtrl, camera, communicate, loadingCtrl, alertController, actionSheetController, fcm, localNotifications, http2, zone, navCtrl, inAppBrowser, firebaseDynamicLinks) {
           var _this = this;
 
           _classCallCheck(this, AppComponent);
@@ -600,6 +606,7 @@
           this.zone = zone;
           this.navCtrl = navCtrl;
           this.inAppBrowser = inAppBrowser;
+          this.firebaseDynamicLinks = firebaseDynamicLinks;
           this.selectedIndex = 0;
           this.appPages = [{
             title: 'Home',
@@ -640,8 +647,6 @@
                 // console.log(this.name_user,'nama user 1')
                 // this.mystyle['background-image'] = "url('"+this.arr_sess.photo+"'";
               } else {
-                // alert('b')
-                // this.name_user='';
                 _this.arr_sess.nama_pel = "";
               }
             });
@@ -724,6 +729,35 @@
             }));
           }
         }, {
+          key: "alert",
+          value: function alert(header, sub, msg) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.alertController.create({
+                        header: header,
+                        subHeader: sub,
+                        message: msg,
+                        buttons: ['OK']
+                      });
+
+                    case 2:
+                      this.alert1 = _context2.sent;
+                      _context2.next = 5;
+                      return this.alert1.present();
+
+                    case 5:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
           key: "initializeApp",
           value: function initializeApp() {
             var _this4 = this;
@@ -748,6 +782,28 @@
               _this4.statusBar.styleDefault();
 
               _this4.splashScreen.hide();
+
+              _this4.firebaseDynamicLinks.onDynamicLink().subscribe(function (res) {
+                var hasil = {};
+                hasil = res;
+                var str;
+                str = hasil.deepLink;
+                var arr;
+                arr = str.split('referral_');
+
+                _this4.alert('referral', 'test referral', arr[1]);
+
+                _this4.userData.set_referral(arr[1]);
+
+                console.log(arr, 'arr dynamic link'); //this.userData.set_referral()
+
+                console.log(res, 'firebase dynamic link');
+              }, function (error) {
+                return console.log(error);
+              });
+
+              console.log("Tesss");
+              var th = _this4;
 
               _this4.storage.get('username').then(function (hsl) {});
 
@@ -971,6 +1027,8 @@
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
         }, {
           type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_14__["InAppBrowser"]
+        }, {
+          type: _ionic_native_firebase_dynamic_links_ngx__WEBPACK_IMPORTED_MODULE_15__["FirebaseDynamicLinks"]
         }];
       };
 
@@ -1131,6 +1189,12 @@
       var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
       /*! @ionic-native/local-notifications/ngx */
       "./node_modules/@ionic-native/local-notifications/__ivy_ngcc__/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_firebase_dynamic_links_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+      /*! @ionic-native/firebase-dynamic-links/ngx */
+      "./node_modules/@ionic-native/firebase-dynamic-links/__ivy_ngcc__/ngx/index.js");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -1139,7 +1203,7 @@
       AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonicModule"].forRoot(), _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["IonicStorageModule"].forRoot(), ngx_communicate__WEBPACK_IMPORTED_MODULE_14__["NgxCommunicateModule"].forRoot()],
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
-        providers: [_ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppBrowser"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_12__["HTTP"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_15__["SocialSharing"], _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_16__["Clipboard"], _ionic_native_toast_ngx__WEBPACK_IMPORTED_MODULE_17__["Toast"], cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__["FCM"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_19__["LocalNotifications"]],
+        providers: [_ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppBrowser"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_12__["HTTP"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_15__["SocialSharing"], _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_16__["Clipboard"], _ionic_native_toast_ngx__WEBPACK_IMPORTED_MODULE_17__["Toast"], cordova_plugin_fcm_with_dependecy_updated_ionic_ngx__WEBPACK_IMPORTED_MODULE_18__["FCM"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_19__["LocalNotifications"], _ionic_native_firebase_dynamic_links_ngx__WEBPACK_IMPORTED_MODULE_20__["FirebaseDynamicLinks"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
       })], AppModule);
       /***/

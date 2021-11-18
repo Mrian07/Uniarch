@@ -37,7 +37,6 @@ exports.copyScripts = copyScripts;
 exports.copyBuildRules = copyBuildRules;
 exports.writeProjectProperties = writeProjectProperties;
 exports.prepBuildFiles = prepBuildFiles;
-exports.writeNameForAndroidStudio = writeNameForAndroidStudio;
 
 function getFrameworkDir (projectPath, shared) {
     return shared ? path.join(ROOT, 'framework') : path.join(projectPath, 'CordovaLib');
@@ -177,19 +176,6 @@ function validateProjectName (project_name) {
 }
 
 /**
- * Write the name of the app in "platforms/android/.idea/.name" so that Android Studio can show that name in the
- * project listing. This is helpful to quickly look in the Android Studio listing if there are so many projects in
- * Android Studio.
- *
- * https://github.com/apache/cordova-android/issues/1172
- */
-function writeNameForAndroidStudio (project_path, project_name) {
-    const ideaPath = path.join(project_path, '.idea');
-    fs.ensureDirSync(ideaPath);
-    fs.writeFileSync(path.join(ideaPath, '.name'), project_name);
-}
-
-/**
  * Creates an android application with the given options.
  *
  * @param   {String}  project_path  Path to the new Cordova android project.
@@ -211,15 +197,14 @@ exports.create = function (project_path, config, options, events) {
     options = options || {};
 
     // Set default values for path, package and name
-    project_path = path.relative(process.cwd(), (project_path || 'CordovaExample'));
+    project_path = path.relative(process.cwd(), project_path);
     // Check if project already exists
     if (fs.existsSync(project_path)) {
         return Promise.reject(new CordovaError('Project already exists! Delete and recreate'));
     }
 
-    var package_name = config.android_packageName() || config.packageName() || 'my.cordova.project';
-    var project_name = config.name()
-        ? config.name().replace(/[^\w.]/g, '_') : 'CordovaExample';
+    var package_name = config.android_packageName() || config.packageName() || 'io.cordova.helloCordova';
+    var project_name = config.name() || 'Hello Cordova';
 
     var safe_activity_name = config.android_activityName() || options.activityName || 'MainActivity';
     var target_api = check_reqs.get_target(project_path);
@@ -229,7 +214,7 @@ exports.create = function (project_path, config, options, events) {
         .then(function () {
             return exports.validateProjectName(project_name);
         }).then(function () {
-        // Log the given values for the project
+            // Log the given values for the project
             events.emit('log', 'Creating Cordova project for the Android platform:');
             events.emit('log', '\tPath: ' + project_path);
             events.emit('log', '\tPackage: ' + package_name);
@@ -286,7 +271,6 @@ exports.create = function (project_path, config, options, events) {
             // Link it to local android install.
             exports.writeProjectProperties(project_path, target_api);
             exports.prepBuildFiles(project_path);
-            exports.writeNameForAndroidStudio(project_path, project_name);
             events.emit('log', generateDoneMessage('create', options.link));
         }).then(() => project_path);
 };

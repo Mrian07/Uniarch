@@ -20,11 +20,13 @@ ion-toolbar {
         }
     }
   }
-  .sc-ion-segment-md-h{
-    --color-checked: #fff;
-    columns: #7a7a7a;;
-  }
+  
 
-  .segment-button-checked{
-      color: #fff;
-  }
+  ion-segment-button{
+    --indicator-box-shadow: transparent!important;
+    --background:white;
+    --color:#58B1CA;
+    --background-checked: #58B1CA !important;
+    --color-checked: white;
+    --indicator-color : transparent!important; /* this solution */
+    }

@@ -29,23 +29,21 @@ buildscript {
 }
 
 allprojects {
-    apply from: 'repositories.gradle'
+    def hasRepositoriesGradle = file('repositories.gradle').exists()
+    if (hasRepositoriesGradle) {
+        apply from: 'repositories.gradle'
+    } else {
+        apply from: "${project.rootDir}/repositories.gradle"
+    }
+
     repositories repos
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    signingConfigs {
-        prod {
-            storeFile file('/home/mrian07/repo/Uniarch/my-release-key.jks')
-            storePassword '123456'
-            keyAlias 'Key0'
-            keyPassword '123456'
-        }
-    }
-    compileSdkVersion 30
-    buildToolsVersion '30.0.3'
+    compileSdkVersion cordovaConfig.SDK_VERSION
+    buildToolsVersion cordovaConfig.BUILD_TOOLS_VERSION
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -55,10 +53,6 @@ android {
     // For the Android Cordova Lib, we allow changing the minSdkVersion, but it is at the users own risk
     defaultConfig {
         minSdkVersion cordovaConfig.MIN_SDK_VERSION
-        targetSdkVersion defaultTargetSdkVersion
-        versionCode 20001
-        versionName '1.0.2'
-        signingConfig signingConfigs.prod
     }
 
     sourceSets {

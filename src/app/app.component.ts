@@ -2,7 +2,7 @@
 import { Component, ViewChildren, OnInit, ViewEncapsulation, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MenuController, Platform, ToastController, NavController, LoadingController, AlertController, ActionSheetController, IonRouterOutlet } from '@ionic/angular';
+import { MenuController, Platform, ToastController, NavController, LoadingController, AlertController, ActionSheetController, IonRouterOutlet,  } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -19,6 +19,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { HttpClient } from '@angular/common/http';
 import { NgZone } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links/ngx';
 
 
 @Component({
@@ -63,6 +64,7 @@ export class AppComponent {
     },
   ];
 
+  alert1: any;
   valid: any;
   arr_sess: any = {};
   loading: any;
@@ -89,6 +91,7 @@ export class AppComponent {
     public zone: NgZone,
     public navCtrl: NavController,
     public inAppBrowser: InAppBrowser,
+    private firebaseDynamicLinks: FirebaseDynamicLinks,
   ) {
     this.initializeApp();
     this.arr_sess.nama_pel = "";
@@ -105,8 +108,6 @@ export class AppComponent {
 
           // this.mystyle['background-image'] = "url('"+this.arr_sess.photo+"'";
         } else {
-          // alert('b')
-          // this.name_user='';
           this.arr_sess.nama_pel = "";
 
         }
@@ -172,6 +173,15 @@ export class AppComponent {
     });
     await this.actionSheet.present();
   }
+  async alert(header, sub, msg) {
+    this.alert1 = await this.alertController.create({
+      header: header,
+      subHeader: sub,
+      message: msg,
+      buttons: ['OK']
+    });
+    await this.alert1.present();
+  }
 
   initializeApp() {
     let subs: any;
@@ -192,6 +202,24 @@ export class AppComponent {
       this.statusBar.backgroundColorByHexString('#5ab1cb');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.firebaseDynamicLinks.onDynamicLink()
+        .subscribe((res: any) => {
+          let hasil: any = {};
+          hasil = res;
+          let str: any;
+          str = hasil.deepLink;
+          let arr: any;
+          arr = str.split('referral_');
+          //this.alert('referral', 'test referral', arr[1]);
+          this.userData.set_referral(arr[1]);
+          console.log(arr, 'arr dynamic link');
+          //this.userData.set_referral()
+          console.log(res, 'firebase dynamic link')
+        },
+          (error: any) => console.log(error));
+
+          console.log("Tesss");
+      var th = this;
       this.storage.get('username').then(hsl => {
       });
       var th = this;

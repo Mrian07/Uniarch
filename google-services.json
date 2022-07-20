@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "100489610481",
-    "project_id": "uniarch-52d00",
-    "storage_bucket": "uniarch-52d00.appspot.com"
+    "project_number": "336966052089",
+    "firebase_url": "https://cctvgrosir-21508.firebaseio.com",
+    "project_id": "cctvgrosir-21508",
+    "storage_bucket": "cctvgrosir-21508.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:100489610481:android:2be40f770b1ab95ab45550",
+        "mobilesdk_app_id": "1:336966052089:android:58af3296ae1d44a3a15a28",
         "android_client_info": {
-          "package_name": "com.uniarch.app"
+          "package_name": "com.cctvgrosir.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "100489610481-cg2o5ie1o3t2id0q51eas2ojfndm9ui4.apps.googleusercontent.com",
+          "client_id": "336966052089-notsjpldncdh66uhs2ontcv1tkf3v8lg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDiAFrNUfXibBNFZDyJrC7PgN2dVWiB8bM"
+          "current_key": "AIzaSyCR1De9zPHkd7pQjLUYlMEcl60bC92NhHw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "100489610481-cg2o5ie1o3t2id0q51eas2ojfndm9ui4.apps.googleusercontent.com",
+              "client_id": "336966052089-notsjpldncdh66uhs2ontcv1tkf3v8lg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -77,7 +77,7 @@ export class KomisiPage implements OnInit {
     url =
       "https://uniarch.page.link?link=https://shop.cctvgrosir.com?referral_" +
       this.data_user.id_pel +
-      "&apn=com.uniarch.app";
+      "&apn=com.cctvgrosir.app";
     this.socialSharing
       .shareViaWhatsApp("", "", url)
       .then((res) => {
@@ -95,7 +95,7 @@ export class KomisiPage implements OnInit {
     url =
       "https://uniarch.page.link?link=https://shop.cctvgrosir.com?referral_" +
       this.data_user.id_pel +
-      "&apn=com.uniarch.app";
+      "&apn=com.cctvgrosir.app";
     this.clipboard.copy(url).then((hsl) => {
       this.toast
         .show("Link berhasil di copy", "5000", "center")

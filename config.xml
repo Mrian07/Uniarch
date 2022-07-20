@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.uniarch.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>PT.AMP</name>
-    <description>An awesome Ionic/Cordova app.</description>
+<widget id="com.cctvgrosir.app" version="7.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>cctvgrosir.com</name>
+    <description>Belanja cctv murah.</description>
     <author email="m.trimulyanto11@gmail.com" href="http://indomobilebusiness.com/">Mrian07</author>
     <content src="index.html" />
     <access origin="*" />

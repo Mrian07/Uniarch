@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   restURL: {
-    baseUrl: 'https://shop.uniarch.id/app/',
-    imagePath: 'https://shop.uniarch.id/gambar/produk/'
+    baseUrl: "https://cctv.uniarch.id/app/",
+    imagePath: "https://cctv.uniarch.id/gambar/produk/",
   },
 };

@@ -199,7 +199,7 @@ export class AppComponent {
               }
           })
         })
-      this.statusBar.backgroundColorByHexString('#5ab1cb');
+      this.statusBar.backgroundColorByHexString('#ffa64d');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.firebaseDynamicLinks.onDynamicLink()

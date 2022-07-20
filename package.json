@@ -33,6 +33,7 @@
     "@ionic-native/toast": "^5.30.0",
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.3.1",
+    "cordova-android": "10.1.2",
     "cordova-plugin-firebase-dynamiclinks": "^6.1.1",
     "cordova-res": "^0.15.3",
     "g": "^2.0.1",
@@ -125,6 +126,8 @@
         "ANDROID_FIREBASE_DYNAMICLINKS_VERSION": "20.1.+"
       }
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }

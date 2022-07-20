@@ -212,13 +212,13 @@ export class AppComponent {
           arr = str.split('referral_');
           //this.alert('referral', 'test referral', arr[1]);
           this.userData.set_referral(arr[1]);
-          console.log(arr, 'arr dynamic link');
+          //console.log(arr, 'arr dynamic link');
           //this.userData.set_referral()
-          console.log(res, 'firebase dynamic link')
+          //console.log(res, 'firebase dynamic link')
         },
           (error: any) => console.log(error));
 
-          console.log("Tesss");
+          //console.log("Tesss");
       var th = this;
       this.storage.get('username').then(hsl => {
       });
